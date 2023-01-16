@@ -1,0 +1,232 @@
+  
+  
+*{
+    margin: 0;
+    padding: 0%;
+}
+body{
+    background-color: #000;
+
+}
+
+
+main{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background: url("./photos/pexels-daniel-putzer-633409.jpg")no-repeat center center/cover;
+    
+    min-height: calc(100vh - 90px);
+}
+
+.left{
+    padding-left: 50px;
+     width:100%;
+}
+ .welcome{
+    font-family: sans-serif;
+    color:white;
+    font-size: 26px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+}
+.github{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 30%;
+    height: 50px;
+    background-color: #FFA500;
+    border-radius: 20px;
+    font-size: 19px;
+    transition: 0.6s;
+    
+}
+.myhome{
+    float: right;
+    height: 500px;
+    width: 80%;
+    padding-top: 100px;
+}
+.cv{
+    text-transform: capitalize;
+    font-weight: bold;
+   margin-left: 20px;
+   text-decoration: underline;
+    color: white;
+    font-size: 22px;
+    transition: 0.6s;
+    
+}
+.github:hover {
+    color: #FFA500;
+    background: #000;
+    border: solid 1.5px #FFA500;
+    
+} 
+.cv:hover{
+    color: #FFA500;
+}
+
+footer{
+    position: relative;
+    background: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height:30px;
+    color: white;
+    
+ }
+
+ @media only screen  and (max-width :950px) {
+ left{
+    padding-left: 10px;
+   
+    justify-content: space-around;
+    height: 70vh;
+ }
+ .welcome{
+    margin-top: 100px;
+    width: 100%;
+    height: 100px;
+    font-size: 20px;
+    
+ }
+ .github{
+    width:40%;
+ }
+ .myhome{
+    padding-left: 150px;
+    width: 90%;
+    padding-top: 0;
+ }
+}
+
+@media only screen  and (max-width :650px) {
+main{
+    display: flex;
+    flex-direction: column-reverse;}
+
+.myhome{
+    height: 300px;
+} 
+.left{
+    width:90%;
+    align-items: flex-start;
+} 
+.welcome{
+    margin-top: 10px;
+}  
+}
+ @media only screen  and (max-width :450px) {
+   
+    
+ }
+ @media only screen  and (max-width :319px) {
+     
+    
+     
+    .welcome{
+        margin-top: 0px;
+        height: 80px;
+        font-size: 16px;
+    }
+    .welcome button{
+     margin-top: 0px;
+     height: 30px;
+     margin-bottom: 100px;
+    }
+    .myhome{
+        height:300px;
+    }
+ } 
+
+ .nav {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: black;
+  height: 80px;
+}
+
+.nav a{
+  display: flex;
+  text-decoration: none;
+  flex-wrap: wrap;
+  align-content: center;
+  font-size: 20px;
+  text-transform: capitalize;
+
+}
+nav img {
+ width: 45px;
+ height: 45px;;
+ border-radius: 50px;
+ margin-left: 10px;
+}
+
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin-bottom: 8px;
+  background-color: white;
+}
+.active{
+
+}
+.nav__link {
+  position: fixed;
+  width: 94%;
+  top: 5rem;
+  left: 18px;
+  background-color:rgba(0, 0, 0,0.8);
+}
+
+.nav__link a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  color:#FFA500;
+  font-family: serif;
+}
+
+.nav__link a:hover {
+  background-color:grey;
+}
+ nav .active{
+  border-bottom: 2px solid white;
+}
+
+.hide {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  .nav__link {
+    display: block;
+    position: static;
+    width: auto;
+    margin-right: 20px;
+    background:none;
+  }
+
+  .nav__link a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

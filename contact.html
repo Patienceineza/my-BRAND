@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="Contact.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <header>
+    <nav class="nav">
+      <img src="./photos/Untitled design.png" alt="myprofile">
+      <div class="hamburger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+
+      <div class="nav__link hide">
+        <a href="index.html">home</a>
+        <a href="Aboutmepage.html">about</a>
+        <a href="Portfolio.html">portfolio</a>
+        <a href="Blogpage.html">blogs</a>
+  
+        <a  class = "active"href="contact.html">contact</a>
+        <a href="login.html">login</a>
+      </div>
+    </nav>
+  </header>
+   <main>
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <div class="text-one"> X323+22V, Kigali</div>
+          <div class="text-two">rwanda</div>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one">+250784953630</div>
+          <div class="text-two">+250781120101</div>
+        </div>
+        <div class="email details">
+          <i class="fas fa-envelope"></i>
+          <div class="topic">Email</div>
+          <div class="text-one">inezapatience2@gmail.com</div>
+          <div class="text-two">inezapatience3@gmail.com</div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        <p>If you have any request,suggestion or request please feel free to contact us </p>
+      <form action="./dashbords/manageuser.html" class = "contact-form">
+        <div class="input-box">
+          <input type="text"  id="name"placeholder="Enter your name" required>
+        </div>
+        <div class="input-box">
+          <input type="text"  id="email"placeholder="Enter your email" required>
+        </div>
+        <div class="input-box message-box">
+        <textarea type=" "  id ="issue"  cols="20" rows="9" placeholder="Tell us your issue" required></textarea>
+        </div>
+        <div class="button">
+          <input type="button" class = "button" value="Send Now" >
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  </main>
+
+<div class = "message-sent"> </div>
+<footer>
+  copyright @2022. All right reserved .Patience
+  
+</footer>
+<script src="bar.js"></script>
+<script >
+  
+const sendbtn = document.querySelector('.button');
+
+let email = document.querySelector('#email').value;
+let name = document.querySelector('#name').value;
+ let issue = document.querySelector('#issue').value;
+let  messages = localStorage.getItem("messages")
+if( messages == null){
+  messages =[]
+}
+else{
+  messages = JSON.parse(messages)
+ }
+sendbtn.addEventListener('click', (event) => {
+ 
+ event.preventDefault();
+
+
+ var message = {
+   email,name,issue
+ }
+  messages.push(message)
+localStorage.setItem("messages",JSON.stringify(messages)),
+ 
+
+
+  location.reload()
+ 
+
+});
+
+
+
+
+</script>
+</body>
+
+</html>

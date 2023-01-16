@@ -1,0 +1,108 @@
+<Html Lang="En">
+  <Head>
+    <Meta Charset="UTF-8" />
+    <Meta Http-Equiv="X-UA-Compatible" Content="IE=Edge" />
+    <Meta Name="Viewport" Content="Width=Device-Width, Initial-Scale=1.0" />
+    <Title>Signup</Title>
+ 
+    <Link Rel="Stylesheet" Href="signup.css"/>
+    
+   
+   </head>
+  </Head>
+  <Body>
+    <header>
+      <nav class="nav">
+        <img src="./photos/Untitled design.png" alt="myprofile">
+
+        <div class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+
+        <div class="nav__link hide">
+          <a href="index.html">home</a>
+          <a href="Aboutmepage.html">about</a>
+          <a href="Portfolio.html">portfolio</a>
+          <a href="Blogpage.html">blogs</a>
+    
+          <a href="contact.html">contact</a>
+          <a href="login.html">login</a>
+        </div>
+      </nav>
+    </header>
+ <main>
+  
+  <Div Class="Container">
+    <Form Class="signup_form">
+      <H1>Signup</H1>
+      <Label For="Email">Email</Label>
+      <Input Type="Email" Name="Email" Id="Email" required />
+      <Label For="Username">Full Name</Label>
+      <Input Type="text" Name="full_name" Id="full_name" required/>
+      <Label For="Password">Password</Label>
+      <Input Type="Password" Name="Password" Id="Password" required/>
+      <Label For="Password">Comfirm Password</Label>
+
+      <Input Type="Password" Name="Comfirm_password" Id="Comfirm_Password" required />
+      <Button class="button1">signup</Button>
+      
+        <a href="login.html">Already have an account?</a>
+      
+      </Div>
+    </Form>
+  </Div>
+ </main>
+ <footer>
+  copyright @2022. All right reserved .Patience
+  
+</footer>
+ <script src="bar.js"></script>
+ <script>
+
+const form = document.querySelector(".signup_form")
+
+const registerBtn = document.querySelector('.button1')
+console.log(registerBtn)
+
+registerBtn.addEventListener('click', (event) => {
+ event.preventDefault()
+ confirm_password= document.getElementById('Comfirm_Password').value
+  var userData = {
+    email: document.getElementById('Email').value,
+    user_name:document.getElementById('full_name').value,
+    password: document.getElementById('Password').value
+
+  };
+  var accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+  if(userData.password !== confirm_password){
+    alert("passwords does  not match")
+  }
+  else{
+
+    
+  if(!accounts.some(user => user.email === userData.email)){
+   accounts.push(userData);
+   localStorage.setItem('accounts', JSON.stringify(accounts));
+   location.reload()
+   console.log(userDaccountsata)
+  }
+  else {
+  alert(userData.email+" is alredy  registered")
+  }
+ 
+  }
+
+
+})
+
+
+
+
+
+
+
+ </script>
+  </Body>
+</Html>

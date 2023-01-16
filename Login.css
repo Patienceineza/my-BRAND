@@ -1,0 +1,264 @@
+*{
+  Margin: 0;
+  Padding: 0;
+  Box-Sizing: Border-Box;
+}
+
+main{
+height: calc(100vh - 80px);
+width: 100%;
+background: url("./photos/pexels-jessica-lewis-creative-583848.jpg") no-repeat center center/cover;
+display: flex;
+align-content: center;
+justify-content: center;
+flex-wrap: wrap;
+}
+.Container {
+width: 50%;
+}
+
+.Container .Form-1 {
+  Display: Flex;
+  Flex-Direction: Column;
+  height: fit-content;
+  
+ border-radius: 5px;
+  Background: #Fff;
+  Width: 100%;
+  Box-Shadow: 0  38px Rgba(0, 0, 0, 0.3);
+}
+
+.Form-1 H1 {
+  Text-Align: Center;
+  Margin-Top: 0.7rem;
+  Margin-Bottom: 1.5rem;
+}
+
+Input[Type="Email"],
+Input[Type="Password"] ,Input[Type="text"] {
+  Border: None;
+  Outline: None;
+  Border-Bottom: 1px Solid #FFA500; 
+  Background: None;
+  Margin: 0.9rem 2rem;
+  Font-Size: 1rem;
+}
+
+Label {
+  Margin: 0 2rem;
+}
+
+Span {
+  Margin: 0 2rem;
+  Color:orange;
+  Cursor: Pointer;
+}
+button{
+
+  margin: 0 auto;
+  width: 90%;
+  background: #FFA500;
+  border: none;
+  border-radius: 5px; 
+  display: flex;
+ justify-content: center;
+  align-content: center;
+flex-wrap: wrap;
+  height: 50px;
+  }
+   .button1:hover{
+  
+      
+      animation-name: bounce-top;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-delay: 0s;
+      animation-iteration-count: 1;
+      animation-direction: normal;
+      animation-fill-mode: none;
+        
+  
+    }
+    @keyframes bounce-top {
+        
+      0% {
+        transform:translateY(0);
+      }
+      25% {
+        transform:translateY(0);
+      }
+      40% {
+        transform:translateY(-24px);
+      }
+      55% {
+        transform:translateY(0);
+      }
+      65% {
+        transform:translateY(-12px);
+      }
+      75% {
+        transform:translateY(0);
+      }
+      82% {
+        transform:translateY(-6px);
+      }
+      87% {
+        transform:translateY(0);
+      }
+      93% {
+        transform:translateY(-4px);
+      }
+      100% {
+        transform:translateY(0);
+      }
+    }
+  
+  
+    .Form-1 a{
+   margin:  10px auto;
+   cursor: pointer;
+   color: #000000;
+  }
+  .container a:hover{
+    background: transparent;
+    font-size: large;
+  }
+  
+
+@Media (Max-Width: 501px) {
+  Html {
+    Font-Size: 15px;
+  }
+
+  .Container  {
+    Width: 70%;
+  }
+}
+
+@Media (Min-Width: 501px) And (Max-Width: 768px) {
+  Html {
+    Font-Size: 14px;
+  }
+
+  .Container  {
+    Width: 70%;
+  }
+}
+
+@Media (Min-Width: 765px) And (Max-Width: 1200px) {
+  Html {
+    Font-Size: 18px;
+  }
+
+  .Container {
+   width: 60%;
+  }
+}
+
+@Media screen And (Max-width: 350px ){
+  .Container {
+   width: 80%;
+  }
+}
+/* nav bar*/
+
+
+.nav {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: black;
+  height: 80px;
+}
+
+.nav a{
+  display: flex;
+  text-decoration: none;
+  flex-wrap: wrap;
+  align-content: center;
+  font-size: 20px;
+  text-transform: capitalize;
+
+}
+nav img {
+ width: 45px;
+ height: 45px;;
+ border-radius: 50px;
+ margin-left: 10px;
+}
+
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin-bottom: 8px;
+  background-color: white;
+}
+.nav__link {
+  position: fixed;
+  width: 94%;
+  top: 5rem;
+  left: 18px;
+  background-color:rgba(0, 0, 0,0.8);
+}
+
+.nav__link a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  color:#FFA500;
+  font-family: serif;
+}
+
+.nav__link a:hover {
+  background-color:grey;
+}
+nav .active{
+  border-bottom: 2px solid white;
+}
+
+
+.hide {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  .nav__link {
+    display: block;
+    position: static;
+    width: auto;
+    margin-right: 20px;
+    background:none;
+  }
+
+  .nav__link a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+
+/* footer*/
+
+footer{
+   
+  background: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height:30px;
+  color: white;
+  justify-self: center;
+  left:40%;
+  align-self: center;
+}

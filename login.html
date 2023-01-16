@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<Html Lang="En">
+  <Head>
+    <Meta Charset="UTF-8" />
+    <Meta Http-Equiv="X-UA-Compatible" Content="IE=Edge" />
+    <Meta Name="Viewport" Content="Width=Device-Width, Initial-Scale=1.0" />
+    <Title>Login Form</Title>
+    
+   <Link Rel="Stylesheet" Href="Login.css"/>
+  </head>
+  </Head>
+  <Body>
+    <header>
+      <nav class="nav">
+        <img src="./photos/Untitled design.png" alt="myprofile">
+        <div class="hamburger">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+  
+        <div class="nav__link hide">
+          <a href="index.html">home</a>
+          <a href="Aboutmepage.html">about</a>
+          <a href="Portfolio.html">portfolio</a>
+          <a href="Blogpage.html">blogs</a>
+    
+          <a href="contact.html">contact</a>
+          <a  class= "active"href="login.html">login</a>
+        </div>
+      </nav>
+    </header>
+ <main>
+  
+  <Div Class="Container">
+    <Form Class="Form-1">
+      <H1>Login</H1>
+      <Label For="Email">Email</Label>
+      <Input Type="Email" Name="Email" Id="Email"  required/>
+      <Label For="Username">Username</Label>
+      <Input Type="text" Name="Username" Id="Username" required/>
+      <Label For="Password">Password</Label>
+      <Input Type="Password" Name="Password" Id="Password"  required/>
+      <Span> Forgot Password</Span>
+      <Button class="button1">Login</Button>
+      <a href="Signup.html">Dont have an account?</a>
+</Div>
+</Form>
+</Div>
+ </main>
+ <footer>
+  copyright @2022. All right reserved .Patience
+  
+</footer> 
+ <script src="bar.js"></script>
+ <script>
+const form = document.querySelector(".Form-1")
+
+const loginBtn = document.querySelector(".button1")
+loginBtn.addEventListener( "click",(event)=>{
+  event.preventDefault()
+  var usersl = JSON.parse(localStorage.getItem('UsersLogin')) || [];
+  var accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+  var loginData = {
+    loginEmail: document.getElementById('Email').value,
+    loginname:document.getElementById("Username").value,
+    loginPass: document.getElementById('Password').value
+  };
+  var currentUser = accounts.filter(user => user.email === loginData.loginEmail);
+  if(currentUser.length > 0) {
+
+    if(currentUser[0].password !== loginData.loginPass) {
+
+      alert("wrong password or username")
+    }
+ else{
+
+  
+  if(!usersl.some(user => user.email === loginData.loginEmail)) {
+      // currently not logged in, so login
+      usersl.push(loginData);
+      localStorage.setItem('UsersLogin', JSON.stringify(usersl))
+      alert("logged in as  "+ loginData.loginname)
+      window.location.href="index.html"
+      const log = document.querySelector(".log")
+      log.innerHTML = "logout"
+
+
+   form.reset()
+    }
+  
+    else {
+ 
+    }
+  
+ }}
+  else {
+alert(" User not found ")
+  }
+})
+
+
+</script>
+  </Body>
+</Html>
