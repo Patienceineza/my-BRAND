@@ -8,7 +8,7 @@ hamburger.addEventListener('click', () => {
 });
  
  
- 
+ //quotes
  
  
  var quotes =[{ quote: "To me, business isn’t about wearing suits or pleasing stockholders. It’s about being true to yourself, your ideas and focusing on the essentials", person: " Richard Branson"},
@@ -30,7 +30,7 @@ hamburger.addEventListener('click', () => {
     })
 
 
-
+//readmore
 
     const readmore = document.querySelectorAll('.read_more')
     
@@ -64,6 +64,7 @@ const grid = document.querySelector(".grid")
   const img_src= document.createElement("img")
   const card_body= document.createElement("div")
   card_body.classList.add("card_body")
+  //card_img.innerHTML =blog.photo
   const card_title= document.createElement("h2")
   card_title.classList.add("card_title")
    card_title.innerText =blog.title
@@ -99,6 +100,9 @@ card_button.addEventListener("click",e=> {
   const dislike = document.createElement("p")
   const comment = document.createElement("p")
 
+  comment.innerText = 0
+like.innerText = 0
+dislike.innerHTML= 0
   const like_i = document.createElement("i")
   const dislike_i = document.createElement("i")
   const comment_i = document.createElement("i")
@@ -106,17 +110,16 @@ card_button.addEventListener("click",e=> {
   
   like_i.setAttribute("class","fa-solid fa-heart")
   dislike_i.setAttribute("class","fa-solid fa-thumbs-down")
-  comment.setAttribute("class","fa-solid fa-message")
+  comment_i.setAttribute("class","fa-solid fa-message")
+
+
+card_img.append(img_src)
+card.append(card_img)
 comment.append(comment_i)
 like.append(like_i)
 dislike.append(dislike_i) 
-comment.innerText = 0
-like.innerText = 0
-dislike.innerText= 0
-card_img.append(img_src)
-card.append(card_img)
  reactions.append(like,dislike,comment)
- card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button)
+ card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button,reactions)
  card.append(card_body)
  grid.append(card)
 
@@ -128,3 +131,39 @@ blogs.forEach (blog =>{
  DisplayBlog(blog)
  }
 })
+
+
+/*
+//like
+const likeBtn = document.querySelector('.fa-solid fa-heart');
+const numberOfLikesElement = document.querySelector('.likesnumber');
+console.log(numberOfLikesElement)
+
+//let numberOfLikes = Number.parseInt(numberOfLikesElement.innerHTML, 10);
+
+let isLiked = false;
+
+// Functions
+
+const likeClick = () => {
+
+// if the like button hasn't been clicked
+
+  if (!isLiked) {
+    likeBtn.classList.add('isLiked');
+    likeBtn.setAttribute("class","fa-regular fa-heart")
+    //numberOfLikesElement.textContent = numberOfLikes;
+    isLiked = !isLiked;
+  }
+// if the like button has been clicked
+ else {
+    likeBtn.classList.remove('isLiked');
+   // numberOfLikes--;
+    //numberOfLikesElement.textContent = numberOfLikes;
+    isLiked = !isLiked;
+  }
+};
+
+// Event Listeners
+
+likeBtn.addEventListener('click', likeClick);*/

@@ -5,16 +5,18 @@
   const aurthur_input = formdata["aurthor"]
   const highlight_input = formdata["highlight"]
   const message_input = formdata["message"]
- console.log(title_input)
+  const photo_input = document.querySelector("#image")
+ console.log(photo_input)
 
   const blogs = JSON.parse(localStorage.getItem("blogs")) || []
 
-  const addblog = ( title, aurthor,highlight,message,) => {
+  const addblog = ( title, aurthor,highlight,message,photo) => {
   blogs.push({
    title,
    aurthor,
    highlight,
    message,
+   photo,
    published :false
 });
 localStorage.setItem("blogs",JSON.stringify(blogs))
@@ -97,7 +99,9 @@ formdata.onsubmit  = async(e) =>{
    title_input.value,
    aurthur_input.value,
    highlight_input.value,
+
    message_input.value,
+   photo_input.value,
    )
    createblogelement(newBlog)
    title_input.value = ""
