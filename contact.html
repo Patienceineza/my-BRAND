@@ -84,9 +84,6 @@
   
 const sendbtn = document.querySelector('.button');
 
-let email = document.querySelector('#email').value;
-let name = document.querySelector('#name').value;
- let issue = document.querySelector('#issue').value;
 let  messages = localStorage.getItem("messages")
 if( messages == null){
   messages =[]
@@ -94,6 +91,10 @@ if( messages == null){
 else{
   messages = JSON.parse(messages)
  }
+ 
+let email = document.querySelector('#email').value;
+let name = document.querySelector('#name').value;
+ let issue = document.querySelector('#issue').value;
 sendbtn.addEventListener('click', (event) => {
  
  event.preventDefault();
