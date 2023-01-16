@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="manageblog.css">
+</head>
+<body>
+ <div class="container">
+    <nav class="nav"> 
+      <header class = "header"> 
+        <div>
+          <img  id="profile" src="Untitled design.png" alt="myprofile">
+        </div>
+        <div>
+            <ul>
+                
+              
+              <li><button><a href="/my-brand/homepages.html">home</a></button></li>
+            </ul>
+        </div>
+         </header>
+    </nav>
+    <main class = "main">  
+        <h2>create blog here</h2>
+     
+
+    <form class = form>
+      <label>Blog Title:</label>
+      <input type="text"  class ="blog-title" name="title" id="title">
+      <br>
+      <label>Blog Image:</label>
+      <input type="file" class  ="file" name="image" id="image">
+      <br>
+      <label>Blog aurthor:</label>
+      <input type="text"  class ="blog-title" name="aurthor" id="aurthor">
+      <br>
+      <label>Blog highligh:</label>
+      <textarea name="highlight"  class ="blog-story" id="highligh"></textarea>
+      <br>
+      <label>Blog full Message:</label>
+      <textarea name="message"  class ="blog-story"id="message"></textarea>
+      <br>
+       
+      <input type="submit" class = "submit" value="Save Blog">
+    </form>
+
+    <div class ="blogscreated"></div>
+        </main>
+   <div class="sidebar">
+    <div><a href="dashbord.html">Dashboard</a></div>
+    <div><a  class = "active" href="manageblog.html">Manage blog</a></div>
+    <div><a href="manageuser.html">Messages</a></div>
+     
+   </div> 
+  
+   <footer>
+    copyright @2022. All right reserved .Patience
+    
+   </footer>
+ </div>
+
+
+ <script src="manageblog.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="manageuser.css">
+</head>
+<body>
+ <div class="container">
+    <nav class="nav"> 
+      <header class = "header"> 
+        <div>
+          <img  id="profile" src="Untitled design.png" alt="myprofile">
+        </div>
+        <div>
+            
+        <ul>
+                
+                <li><button><a href="/my-brand/homepages.html">home</a></button></li>
+            </ul>
+        </div>
+         </header>
+    </nav>
+    <main class = "main"> 
+   
+        <div id = "messages-received">
+     </div>
+    </main>
+   <div class="sidebar">
+    <div><a href="dashbord.html">Dashboard</a></div>
+    <div><a href="manageblog.html">Manage blog</a></div>
+    <div><a  class = "active" href="manageuser.html">messages</a></div>
+     
+   </div> 
+
+   
+   <footer>
+    copyright @2022. All right reserved .Patience
+    
+   </footer>
+ <script >
+    
+// Get the container element where the responses will be displayed
+const container = document.querySelector("#messages-received");
+
+// Retrieve the saved form data from local storage
+let  messages = localStorage.getItem("messages")
+if( messages == null){
+  messages =[]
+}
+else{
+  messages = JSON.parse(messages)
+ }
+messages.forEach(message =>{
+const emailDiv = document.createElement('div');
+emailDiv.innerText = "email: "+message.email
+const nameDiv = document.createElement('div');
+nameDiv.innerText=  "name: " +message.name
+const issueDiv = document.createElement('div');
+issueDiv.innerText= "issue: "+message.issue
+const message_container = document.createElement('article')
+const fonta_div = document.createElement('div')
+fonta_div.setAttribute("class","fonta-div")
+const deletebtn = document.createElement('button')
+const replybtn = document.createElement('button')
+fonta_div.append(replybtn)
+fonta_div.append(deletebtn)
+deletebtn.innerText='delete'
+replybtn.innerText='reply'
+// Append the div elements to the container
+message_container.appendChild(emailDiv);
+message_container.appendChild(nameDiv);
+message_container.appendChild(issueDiv);
+container.append(message_container)
+})
+// Create a div element for each piece of form data
+
+
+
+ </script>
+</body>
+</html>

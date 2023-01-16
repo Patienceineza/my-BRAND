@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+.container{
+    display:grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3.3fr 0.2fr;
+    grid-template-areas: 
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar footer footer footer";
+    text-transform: capitalize;
+    align-content: center;
+    justify-content: center;
+}
+.nav{
+    background-color: aqua;
+    grid-area: nav;
+}
+.main{
+    background-color: blueviolet;
+    grid-area: main;
+}
+.sidebar{
+    padding-top: 40px;
+    padding-left: 20px;
+    align-items: flex-start;
+    background-color: aquamarine;
+    grid-area: sidebar;
+    row-gap: 10px;
+
+    
+}
+
+footer{
+    background-color: rgb(150, 133, 167);
+    grid-area: footer;
+     
+        background: #000;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    
+        color: white;
+        
+     
+}
+header{
+    background:black;
+    display: grid;
+    grid-template-columns: 1fr  1fr;
+    align-items: center;
+
+}
+img{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 45px;
+    height:45px ;
+    border-radius: 50px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:#FFA500;
+    align-items: center;
+  }
+ul li a {
+    width:100px;
+    color: #FFA500;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 600;
+    transition: 0.9s;
+} 
+ul li a:hover {
+    font-size: large;
+}
+ li{
+  list-style: none;
+  font-weight: bold;
+  font: size 32px; 
+  font-style: normal;
+ }
+ .sidebar{
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    color: black;
+ }
+ a{
+    text-decoration: none;
+ }
+@media only screen  and (max-width :600px) {
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr ;
+        grid-template-areas: 
+        "nav"
+        "sidebar "
+        "main"
+        "content1"
+        "content2"
+        "content3"
+        "footer";
+    }
+     
+}
