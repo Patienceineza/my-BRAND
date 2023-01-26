@@ -81,6 +81,7 @@ const grid = document.querySelector(".grid")
   link.classList.add("author_link")
   link.href ="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" 
   link.innerText= blog.aurthor
+ img_src.setAttribute('src',blog.photo)
   card_aurthur.append(link)
 
   const card_button= document.createElement("a")
