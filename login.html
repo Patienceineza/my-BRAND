@@ -62,11 +62,43 @@ loginBtn.addEventListener( "click",(event)=>{
   var usersl = JSON.parse(localStorage.getItem('UsersLogin')) || [];
   var accounts = JSON.parse(localStorage.getItem('accounts')) || [];
   var loginData = {
-    loginEmail: document.getElementById('Email').value,
-    loginname:document.getElementById("Username").value,
-    loginPass: document.getElementById('Password').value
+    email: document.getElementById('Email').value,
+    fullname:document.getElementById("Username").value,
+    password: document.getElementById('Password').value
   };
-  var currentUser = accounts.filter(user => user.email === loginData.loginEmail);
+
+
+
+  const  newData ={
+    method:'POST',
+    headers:{
+      'Content-Type':"application/json"
+      
+    },
+    body: JSON.stringify(loginData)
+  }
+ // console.log(newData)
+
+fetch("http://localhost:5000/users/login",newData)
+.then( async (n)=>{
+  const res =  await n.json()
+  console.log(res)
+  
+  let k = res.token
+
+  if(n.status == 200){
+  alert('login successfull')
+  localStorage.setItem('token',res.token)
+location.reload()
+  }
+ 
+}).catch(error=>{
+  console.log(error)
+})
+
+
+  
+  /*var currentUser = accounts.filter(user => user.email === loginData.loginEmail);
   if(currentUser.length > 0) {
 
     if(currentUser[0].password !== loginData.loginPass) {
@@ -97,9 +129,9 @@ loginBtn.addEventListener( "click",(event)=>{
   else {
 alert(" User not found ")
   }
+
+*/
 })
-
-
 </script>
   </Body>
 </Html>

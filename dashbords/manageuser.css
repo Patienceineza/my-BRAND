@@ -133,40 +133,47 @@ ul li a:hover {
 
  }
  #messages-received article{
-   margin-top: 20px;;
+  
     display: flex;
     flex-direction: column;
-   height:fit-content;
+   height:30px;
   justify-content: space-evenly;
   align-items: left;
-border-radius: 10px;
-   border:  solid 1px black; 
-   background:rgb(255, 255, 255,0.5);
-   padding-left:  20px;
+  border-radius: 10px;
+   
+
+   margin-left:  20px;
    padding: 20px 20px;
    border-bottom: 0 0 5px black;
  }
 
  .fonta-div{
     display: flex;
-    justify-content: space-around;
-    padding-top: 20px;
+    justify-content: flex-end;
+    width:30%;
+   margin-right: 20px;
  }
  .fonta-div button{
-    width:40%;
+    width:50%;
+    height: 50px;
+  
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: sans-serif;
+   cursor: pointer;
+    border: none;
  }
-@media only screen  and (max-width :600px) {
-    .container{
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr ;
-        grid-template-areas: 
-        "nav"
-        "sidebar "
-        "main"
-        "content1"
-        "content2"
-        "content3"
-        "footer";
-    }
-     
+.allcontainer{
+    display: flex;
+    flex-direction: row-reverse;
+    background:rgb(255, 255, 255,0.5);
+    margin-top: 5px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    height:100px;
+    border-radius: 10px;
 }

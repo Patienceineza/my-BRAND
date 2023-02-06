@@ -1,4 +1,6 @@
-  const blogs_container= document.querySelector(".blogscreated")
+ 
+ 
+ /* const blogs_container= document.querySelector(".blogscreated")
   const sendbtn = document.querySelector('.submit');
   const formdata = document.querySelector(".form")
   const title_input = formdata["title"]
@@ -29,13 +31,13 @@ const createblogelement =(e) =>{
   const {
     title 
   } = e
-    const blogs_div    =document.createElement("div")
+  const blogs_div =document.createElement("div")
   const font_div    =document.createElement("div")
   const blog_title  =document.createElement("h3")
  const fontablogcontainer =document.createElement("article")
- const publishbtn = document.createElement("button")
+ const publishbtn  = document.createElement("button")
 
- const  deletebtn   = document.createElement("button")
+ const  deletebtn  = document.createElement("button")
 
  blogs_div.setAttribute("class","blogdiv")
  font_div.setAttribute("class","fontas")
@@ -110,4 +112,78 @@ formdata.onsubmit  = async(e) =>{
    message_input.value= ""
 
 }
+*/
 
+const sendbtn = document.querySelector('.submit');
+
+let  messages = localStorage.getItem("messages")
+if( messages == null){
+  messages =[]
+}
+else{
+  messages = JSON.parse(messages)
+
+   
+ }
+ //picture codes
+ /*
+ let newUrl = new URL(location.href)
+let image;
+
+
+picture.addEventListener("change",() =>{
+    const fr =new FileReader();
+    fr.readAsDataURL(picture.files[0]);
+    fr.addEventListener("load",() =>{
+        const url = fr.result;
+        image = url
+        console.log(image)
+        document.querySelector('#img1').src=image
+       return url; 
+    })
+}
+) */
+
+sendbtn.addEventListener('click', (event) => {
+ 
+ event.preventDefault();
+let imageFile;
+ let blog = {
+    title: document.querySelector('#title').value,
+    image: imageFile,
+    message: document.querySelector('#message').value,
+    highlight: document.querySelector('#highligh').value,
+    aurthor: document.querySelector('#aurthor').value,
+    published:"true"
+ }
+  imageFile = blog.append('file', document.querySelector('input[type="file"]').files[0]);
+ var token = localStorage.getItem('token')
+ const  newData ={
+    method:'POST',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+    },
+    body: JSON.stringify(blog)
+  }
+  console.log(newData)
+ 
+fetch("https://mybrandbackendapi.up.railway.app/blogs",newData)
+.then((n)=>{
+  const res = n.json()
+  console.log(res)
+
+  if(n.status == 200){
+   alert("blog  successfully created ")
+   location.reload()
+  }
+  else if(n.status == 400){
+    alert('all inputs re required')
+  }
+ 
+}).catch(error=>{
+  console.log(error)
+})
+
+});
+ 

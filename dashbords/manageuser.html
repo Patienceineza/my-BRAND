@@ -26,13 +26,22 @@
     <main class = "main"> 
    
         <div id = "messages-received">
+        <!-- <div class = "conatiner">
+     <article>
+      <div>email:inezapatience2@gmail.com</div>
+      <div>name</div>
+      <div>issue</div>
+
+     </article>
+        </div> -->
+
      </div>
     </main>
    <div class="sidebar">
     <div><a href="dashbord.html">Dashboard</a></div>
     <div><a href="manageblog.html">Manage blog</a></div>
     <div><a  class = "active" href="manageuser.html">messages</a></div>
-     
+    <div><a  href="addblog.html">manage users</a></div>
    </div> 
 
    
@@ -46,26 +55,41 @@
 const container = document.querySelector("#messages-received");
 
 // Retrieve the saved form data from local storage
-let  messages = localStorage.getItem("messages")
-if( messages == null){
-  messages =[]
-}
-else{
-  messages = JSON.parse(messages)
- }
-messages.forEach(message =>{
+function messages() {
+  var token = localStorage.getItem('token')
+
+  const  newmessagesData ={
+    method:'GET',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+      
+    }
+  }
+ // console.log(newData)
+ console.log(newmessagesData.headers)
+fetch("https://mybrandbackendapi.up.railway.app/messages",newmessagesData)
+.then( async (n)=>{
+  const res =  await n.json()
+  console.log(res.getmessage[0])
+let allmessages = res.getmessage
+ 
+allmessages.forEach(message =>{
 const emailDiv = document.createElement('div');
 emailDiv.innerText = "email: "+message.email
 const nameDiv = document.createElement('div');
 nameDiv.innerText=  "name: " +message.name
 const issueDiv = document.createElement('div');
 issueDiv.innerText= "issue: "+message.issue
+
+const all_container = document.createElement('div')
+all_container.setAttribute("class","allcontainer")
 const message_container = document.createElement('article')
 const fonta_div = document.createElement('div')
 fonta_div.setAttribute("class","fonta-div")
 const deletebtn = document.createElement('button')
 const replybtn = document.createElement('button')
-fonta_div.append(replybtn)
+
 fonta_div.append(deletebtn)
 deletebtn.innerText='delete'
 replybtn.innerText='reply'
@@ -73,8 +97,43 @@ replybtn.innerText='reply'
 message_container.appendChild(emailDiv);
 message_container.appendChild(nameDiv);
 message_container.appendChild(issueDiv);
-container.append(message_container)
+
+all_container.appendChild(fonta_div)
+all_container.append(message_container)
+container.append(all_container)
+
+id = message._id  
+console.log(id)
+deletebtn.addEventListener("click", async(e)=>{
+e.preventDefault()
+
+const  deletedata ={
+    method:'DELETE',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+      
+    }
+  }
+  console.log(id)
+   await fetch(`https://mybrandbackendapi.up.railway.app/messages/${id}`,deletedata).then(()=>{
+    window.location.reload()
+    alert('message succussfully deleted')
+ 
+  })
+  
 })
+})
+}).catch(error=>{
+  console.log(error)
+})
+
+}
+messages()
+
+
+
+
 // Create a div element for each piece of form data
 
 

@@ -27,6 +27,8 @@
     flex-direction: column;
     background:rgb(121, 112, 112);
     width: 80vw;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .dashes{
     display: flex;
@@ -38,7 +40,7 @@
 .dashes div{
     position: sticky;
     width:20%;
-    height: 150px;
+    height: 50px;
     background:rgb(255, 255, 255,0.5);
     font-size: 20px; 
     font-weight: bold;
@@ -46,6 +48,8 @@
     box-shadow:solid  10px,10px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .blogs{
@@ -55,39 +59,24 @@
     flex-direction: column;
  
 }
-.blog3, .blog1, .blog2{
-    padding-left: 10px;
-   height: 50px;
-   width: 95%;
-   margin-top: 40px;
-   background:rgb(255, 255, 255,0.5);
-   align-content: center;
-   display: grid;
-   grid-template-columns: 1fr 0.2fr 0.2fr ;
-   font-size: 20px;
-   border-radius: 10px;
+.allusers, .allmessages, .allblogs{
+
+    width:20%;
+    height: 50px;
+    background:rgb(255, 255, 255,0.5);
+    font-size: 20px; 
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow:solid  10px,10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
    
 }
-
-.blogs button{
-    width: 100px;
-    height: 25px;
-    font-size: 16px;
-
-}
-.blogs button:hover{
-    color: #FFA500;
-    
-}
-.img1{
-    border-radius: 50px;
-    margin-bottom: 100px;
-    width: 100px;
-    height:100px;
-}
-h2{
-  align-self:center ;
-  justify-content: center;
+.blogs{
+    widht:
 }
 .sidebar{
  

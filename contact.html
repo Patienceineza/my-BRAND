@@ -96,19 +96,39 @@ sendbtn.addEventListener('click', (event) => {
  
  event.preventDefault();
 
- let email = document.querySelector('#email').value;
-let name = document.querySelector('#name').value;
- let issue = document.querySelector('#issue').value;
-
- var message = {
-   email,name,issue
+ var contactData ={
+   email: document.querySelector('#email').value,
+   name : document.querySelector('#name').value,
+   issue : document.querySelector('#issue').value
  }
-  messages.push(message)
-localStorage.setItem("messages",JSON.stringify(messages))
+ const  newData ={
+    method:'POST',
+    headers:{
+      'Content-Type':"application/json"
+      
+    },
+    body: JSON.stringify(contactData)
+  }
+  console.log(newData)
+fetch("http://localhost:5000/messages",newData)
+.then((n)=>{
+  const res = n.json()
+  console.log(res)
+  console.log(n)
+  if(n.status == 200){
+   alert("message  successfully sent ")
+   location.reload()
+  }
+  else if(n.status == 400){
+    alert('please make sure everything is ready')
+  }
  
+}).catch(error=>{
+  console.log(error)
+})
 
-location.reload()
- 
+
+
 
 });
 

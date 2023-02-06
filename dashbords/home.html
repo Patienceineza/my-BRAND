@@ -5,39 +5,160 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="addblog.css">
 </head>
-<body id ="home">
+<body>
  <div class="container">
     <nav class="nav"> 
       <header class = "header"> 
         <div>
-            <img  id="profile" src="Untitled design.png" alt="myprofile">
+          <img  id="profile" src="Untitled design.png" alt="myprofile">
         </div>
         <div>
-            <ul>
-                <li class = "homepages"><a href ="homepages.html">Home</a></li>
-                <li> <a href="Aboutmepage.html">About Me</a></li>
-                <li><a href="Portfolio.html">Portfolio </a></li>
-                <li><a href="Blogpage.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
+            
+        <ul>
+                
+          <li><button><a href="../index.html">home</a></button></li>
             </ul>
         </div>
          </header>
     </nav>
-    <main class = "main"> main</main>
+    <main class = "main"> 
+     <h3>all blogs Created</h3>
+        <div id = "allblogs_received" >  </div>
+    </main>
    <div class="sidebar">
     <div><a href="dashbord.html">Dashboard</a></div>
     <div><a href="manageblog.html">Manage blog</a></div>
-    <div><a href="manageuser.html">Manage users</a></div>
-     
+    <div><a  class = "active" href="manageuser.html">messages</a></div>
+    <div><a  href="addblog.html">manage users</a></div>
    </div> 
+
    
    <footer>
     copyright @2022. All right reserved .Patience
     
    </footer>
- </div>
-</body>
-</html>
+   <script>
+   const blogs_received = document.querySelector("#allblogs_received")
+function blogs() {
+  var token = localStorage.getItem('token')
+
+  const  getAlblogs ={
+    method:'GET',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+      
+    }
+  }
+ // console.log(newData)
+ console.log(getAlblogs.headers)
+fetch("https://mybrandbackendapi.up.railway.app/blogs",getAlblogs)
+.then( async (n)=>{
+  const res =  await n.json()
+  let allblogs = res
+  console.log(allblogs)
+
+  allblogs.forEach(res =>{
+    const title = document.createElement('h3');
+    title.innerText =res.title
+    const fonta_div = document.createElement('div')
+    const article = document.createElement('article')
+    const all_container = document.createElement('section')
+    
+    fonta_div.setAttribute("class","fonta-div")
+    const deletebtn = document.createElement('button')
+    const publish = document.createElement('button')
+fonta_div.append(publish)
+fonta_div.append(deletebtn)
+deletebtn.innerText='delete'
+publish.innerText='publish'
+article.append(title)
+all_container .append(article,fonta_div)
+blogs_received.append(all_container)
+// Append the div elements to the container
+const id = res._id
+console.log(id)
+deletebtn.addEventListener("click", async(e)=>{
+e.preventDefault()
+
+const  deletedata ={
+    method:'DELETE',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+    
+      
+    }
+  }
+  console.log(id)
+   await fetch(`https://mybrandbackendapi.up.railway.app/blogs/${id}`,deletedata).then(()=>{
+    window.location.reload()
+   
+ 
+  }) 
+})
+const updateButton = document.querySelector('#updateButton');
+
+publish.addEventListener('click', (e) => {
+  e.preventDefault()
+  var published = res.published
+  console.log(published)
+   
+  var newpub ="publish" ; 
+  if(published == "publish"){
+    newpub ="unpublish"
+    publish.innerText = "unpublish"
+  }
+  else {
+    newpub ="publish"
+    publish.innerText = "publish"
+  }
+
+
+  fetch(`https://mybrandbackendapi.up.railway.app/blogs/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({published: newpub })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+});
+
+
+
+
+
+
+
+ })
+  
+
+
+  
+
+
+
+
+  })
+}
+
+blogs()
+
+   </script>
+  </body>
+  </html>
+  

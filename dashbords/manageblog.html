@@ -24,15 +24,17 @@
          </header>
     </nav>
     <main class = "main">  
-        <h2>create blog here</h2>
-     
+       <div>
+         <h2>create blog here</h2>
+       <a href="home.html"> <button>view all blogs</button></a>
+       </div>
 
-    <form class = form>
+    <form class = "form"   method="post" enctype="multipart/form-data">
       <label>Blog Title:</label>
       <input type="text"  class ="blog-title" name="title" id="title">
       <br>
       <label>Blog image Url:</label>
-      <input type="text"  class ="image_palce" name="image" id="image">
+      <input type="file"  class ="image_palce" name="image" id="image">
       <br>
       <label>Blog aurthor:</label>
       <input type="text"  class ="blog-title" name="aurthor" id="aurthor">
@@ -51,8 +53,9 @@
         </main>
    <div class="sidebar">
     <div><a href="dashbord.html">Dashboard</a></div>
-    <div><a  class = "active" href="manageblog.html">Manage blog</a></div>
-    <div><a href="manageuser.html">Messages</a></div>
+    <div><a class = "active" href="manageblog.html">Manage blog</a></div>
+    <div><a  href="manageuser.html">messages</a></div>
+    <div><a  href="addblog.html">manage users</a></div>
      
    </div> 
   

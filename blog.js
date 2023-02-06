@@ -51,67 +51,85 @@ hamburger.addEventListener('click', () => {
 
 
 
-const blogs = JSON.parse(localStorage.getItem("blogs")) ||[]
+var token = localStorage.getItem('token')
 //for card 1
 
 
-const grid = document.querySelector(".grid")
- function DisplayBlog(blog){
-  const card = document.createElement("div")
-  card.classList.add("card")
-  const card_img= document.createElement("div")
-  card_img.classList.add("card_img")
-  const img_src= document.createElement("img")
-  const card_body= document.createElement("div")
-  card_body.classList.add("card_body")
-  //card_img.innerHTML =blog.photo
-  const card_title= document.createElement("h2")
-  card_title.classList.add("card_title")
-   card_title.innerText =blog.title
-  const card_story= document.createElement("p")
-  card_story.classList.add("card_story")
-  card_story.innerText =blog.message
-  const card_story_more= document.createElement("p")
-  card_story_more.classList.add("revealmore")
-  card_story_more.innerText =blog.highlight
-  const card_aurthur= document.createElement("p")
-  card_aurthur.classList.add("card_author")
-  card_aurthur.innerText ="by "
-  const link = document.createElement("a")
-  link.classList.add("author_link")
-  link.href ="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" 
-  link.innerText= blog.aurthor
- img_src.setAttribute('src',blog.photo)
-  card_aurthur.append(link)
+const  newData ={
+  method:'GET',
+  headers:{
+    'Content-Type':"application/json",
+    "authorization":`Bearer ${token}`
+  }
+ 
+}
+console.log(newData)
+fetch("https://mybrandbackendapi.up.railway.app/blogs",newData)
+.then( async (n)=>{
+  const res =  await n.json()
+  console.log(res)
+let allblogs = res
 
-  const card_button= document.createElement("a")
-  card_button.classList.add("read_more")
-  card_button.innerText ="Read more"
+allblogs.forEach (blog =>{
+  if( blog.published == "unpublish" ){
+  
+const grid = document.querySelector(".grid")
+
+const card = document.createElement("div")
+card.classList.add("card")
+const card_img= document.createElement("div")
+card_img.classList.add("card_img")
+const img_src= document.createElement("img")
+const card_body= document.createElement("div")
+card_body.classList.add("card_body")
+//card_img.innerHTML =blog.photo
+const card_title= document.createElement("h2")
+card_title.classList.add("card_title")
+ card_title.innerText =blog.title
+const card_story= document.createElement("p")
+card_story.classList.add("card_story")
+card_story.innerText =blog.message
+const card_story_more= document.createElement("p")
+card_story_more.classList.add("revealmore")
+card_story_more.innerText =blog.highlight
+const card_aurthur= document.createElement("p")
+card_aurthur.classList.add("card_author")
+card_aurthur.innerText ="by "
+const link = document.createElement("a")
+link.classList.add("author_link")
+link.href ="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" 
+link.innerText= blog.aurthor
+img_src.setAttribute('src',blog.imageUrl)
+card_aurthur.append(link)
+
+const card_button= document.createElement("a")
+card_button.classList.add("read_more")
+card_button.innerText ="Read more"
 
 card_button.addEventListener("click",e=> {
-  e.preventDefault()
-  reveal(card_button.parentNode)
+e.preventDefault()
+reveal(card_button.parentNode)
 
 })
 
 
-  const reactions = document.createElement("div")
-  reactions.classList.add("reactions")
-  const like = document.createElement("p")
-  const dislike = document.createElement("p")
-  const comment = document.createElement("p")
+const reactions = document.createElement("div")
+reactions.classList.add("reactions")
+const like = document.createElement("p")
+const dislike = document.createElement("p")
+const comment = document.createElement("p")
 
-  comment.innerText = 0
+comment.innerText = 0
 like.innerText = 0
 dislike.innerHTML= 0
-  const like_i = document.createElement("i")
-  const dislike_i = document.createElement("i")
-  const comment_i = document.createElement("i")
+const like_i = document.createElement("i")
+const dislike_i = document.createElement("i")
+const comment_i = document.createElement("i")
 
-  
-  like_i.setAttribute("class","fa-solid fa-heart")
-  dislike_i.setAttribute("class","fa-solid fa-thumbs-down")
-  comment_i.setAttribute("class","fa-solid fa-message")
+
+like_i.setAttribute("class","fa-solid fa-heart")
+dislike_i.setAttribute("class","fa-solid fa-thumbs-down")
+comment_i.setAttribute("class","fa-solid fa-message")
 
 
 card_img.append(img_src)
@@ -119,19 +137,29 @@ card.append(card_img)
 comment.append(comment_i)
 like.append(like_i)
 dislike.append(dislike_i) 
- reactions.append(like,dislike,comment)
- card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button,reactions)
- card.append(card_body)
- grid.append(card)
+reactions.append(like,dislike,comment)
+card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button,reactions)
+card.append(card_body)
+grid.append(card)
 
 
+  }
+ })
  
-}
-blogs.forEach (blog =>{
- if( blog.published ){
- DisplayBlog(blog)
- }
+ 
+
+
+
 })
+
+
+.catch(error=>{
+console.log(error)
+})
+
+
+
+
 
 
 /*
