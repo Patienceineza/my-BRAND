@@ -84,7 +84,7 @@ registerBtn.addEventListener('click', (event) => {
     body: JSON.stringify(userData)
   }
   console.log(newData)
-fetch("http://localhost:5000/users",newData)
+fetch("https://mybrandbackendapi.up.railway.app/users",newData)
 .then((n)=>{
   const res = n.json()
   console.log(res)

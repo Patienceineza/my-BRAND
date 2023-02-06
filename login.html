@@ -79,7 +79,7 @@ loginBtn.addEventListener( "click",(event)=>{
   }
  // console.log(newData)
 
-fetch("http://localhost:5000/users/login",newData)
+fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
 .then( async (n)=>{
   const res =  await n.json()
   console.log(res)

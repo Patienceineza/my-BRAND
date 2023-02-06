@@ -147,16 +147,16 @@ picture.addEventListener("change",() =>{
 sendbtn.addEventListener('click', (event) => {
  
  event.preventDefault();
-let imageFile;
+
  let blog = {
     title: document.querySelector('#title').value,
-    image: imageFile,
+    image: document.querySelector("#image").value,
     message: document.querySelector('#message').value,
     highlight: document.querySelector('#highligh').value,
     aurthor: document.querySelector('#aurthor').value,
     published:"true"
  }
-  imageFile = blog.append('file', document.querySelector('input[type="file"]').files[0]);
+ 
  var token = localStorage.getItem('token')
  const  newData ={
     method:'POST',
@@ -166,8 +166,8 @@ let imageFile;
     },
     body: JSON.stringify(blog)
   }
-  console.log(newData)
- 
+  console.log(newData.body)
+
 fetch("https://mybrandbackendapi.up.railway.app/blogs",newData)
 .then((n)=>{
   const res = n.json()
