@@ -110,7 +110,7 @@ sendbtn.addEventListener('click', (event) => {
     body: JSON.stringify(contactData)
   }
   console.log(newData)
-fetch("http://localhost:5000/messages",newData)
+fetch("https://mybrandbackendapi.up.railway.app/messages",newData)
 .then((n)=>{
   const res = n.json()
   console.log(res)
