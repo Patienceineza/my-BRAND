@@ -147,30 +147,32 @@ picture.addEventListener("change",() =>{
 sendbtn.addEventListener('click', (event) => {
  
  event.preventDefault();
-
- let blog = {
-    title: document.querySelector('#title').value,
-    image: document.querySelector("#image").value,
-    message: document.querySelector('#message').value,
-    highlight: document.querySelector('#highligh').value,
-    aurthor: document.querySelector('#aurthor').value,
-    published:"true"
- }
- 
+//const  image = document.querySelector('.image_palce').files[0]
+//const blogData = new FormData()
+const form = document.querySelector('.form')
+//console.log(image)
+ const  blog =  new FormData(form)
+ blog.append('author',document.querySelector('#aurthor').value)
+ blog.append('highlight',document.querySelector('#highligh').value)
+ blog.append('message',document.querySelector('#message').value)
+ blog.append('title',document.querySelector('#title').value)
+ blog.append('image', document.querySelector('.image_palce').files[0]);
  var token = localStorage.getItem('token')
+ console.log("new",blog.get("image"))
  const  newData ={
     method:'POST',
+    
     headers:{
-      'Content-Type':"application/json",
+      'Content-Type':"application/x-www-form-urlencoded",
       "authorization":`Bearer ${token}`
     },
-    body: JSON.stringify(blog)
+    body:blog
   }
-  console.log(newData.body)
+  //console.log(newData.body)
 
-fetch("https://mybrandbackendapi.up.railway.app/blogs",newData)
-.then((n)=>{
-  const res = n.json()
+ fetch("http://localhost:5000/blogs/",newData)
+.then( async(n)=>{
+  const res =await n.json()
   console.log(res)
 
   if(n.status == 200){
