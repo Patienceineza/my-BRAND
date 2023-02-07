@@ -1,0 +1,267 @@
+// allblogs.forEach (blog =>{
+//   if( blog.published == "unpublish" ){
+  
+// const grid = document.querySelector(".grid")
+
+// const card = document.createElement("div")
+// card.classList.add("card")
+// const card_img= document.createElement("div")
+// card_img.classList.add("card_img")
+// const img_src= document.createElement("img")
+// const card_body= document.createElement("div")
+// card_body.classList.add("card_body")
+// //card_img.innerHTML =blog.photo
+// const card_title= document.createElement("h2")
+// card_title.classList.add("card_title")
+//  card_title.innerText =blog.title
+// const card_story= document.createElement("p")
+// card_story.classList.add("card_story")
+// card_story.innerText =blog.message
+// const card_story_more= document.createElement("p")
+// card_story_more.classList.add("revealmore")
+// card_story_more.innerText =blog.highlight
+// const card_aurthur= document.createElement("p")
+// card_aurthur.classList.add("card_author")
+// card_aurthur.innerText ="by "
+// const link = document.createElement("a")
+// link.classList.add("author_link")
+// link.href ="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" 
+// link.innerText= blog.aurthor
+// console.log(blog.image.url)
+
+// img_src.setAttribute('src',blog.image.url)
+// card_aurthur.append(link)
+
+// const card_button= document.createElement("a")
+// card_button.classList.add("read_more")
+// card_button.innerText ="Read more"
+
+// card_button.addEventListener("click",e=> {
+// e.preventDefault()
+// reveal(card_button.parentNode)
+
+// })
+
+
+// const reactions = document.createElement("div")
+// reactions.classList.add("reactions")
+// const like = document.createElement("p")
+// const dislike = document.createElement("p")
+// const comment = document.createElement("p")
+
+// comment.innerText = 0
+// like.innerText = 0
+// dislike.innerHTML= 0
+// const like_i = document.createElement("i")
+// const dislike_i = document.createElement("i")
+// const comment_i = document.createElement("i")
+
+
+// like_i.setAttribute("class","fa-solid fa-heart")
+// dislike_i.setAttribute("class","fa-solid fa-thumbs-down")
+// comment_i.setAttribute("class","fa-solid fa-message")
+
+
+// card_img.append(img_src)
+// card.append(card_img)
+// comment.append(comment_i)
+// like.append(like_i)
+// dislike.append(dislike_i) 
+// reactions.append(like,dislike,comment)
+// card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button,reactions)
+// card.append(card_body)
+// grid.append(card)
+
+
+//   }
+//  })
+ 
+/*
+//like
+const likeBtn = document.querySelector('.fa-solid fa-heart');
+const numberOfLikesElement = document.querySelector('.likesnumber');
+console.log(numberOfLikesElement)
+
+//let numberOfLikes = Number.parseInt(numberOfLikesElement.innerHTML, 10);
+
+let isLiked = false;
+
+// Functions
+
+const likeClick = () => {
+
+// if the like button hasn't been clicked
+
+  if (!isLiked) {
+    likeBtn.classList.add('isLiked');
+    likeBtn.setAttribute("class","fa-regular fa-heart")
+    //numberOfLikesElement.textContent = numberOfLikes;
+    isLiked = !isLiked;
+  }
+// if the like button has been clicked
+ else {
+    likeBtn.classList.remove('isLiked');
+   // numberOfLikes--;
+    //numberOfLikesElement.textContent = numberOfLikes;
+    isLiked = !isLiked;
+  }
+};
+
+// Event Listeners
+
+likeBtn.addEventListener('click', likeClick);*/
+// deletebtn = document.querySelector(".deletebtn")
+
+
+// function deleteBlog(index) {
+//   // Get the current array of blogs from local storage
+//   let blogs = JSON.parse(localStorage.getItem('blogs'));
+
+//   // Remove the blog at the specified index
+//   blogs.splice(index, 1);
+
+//   // Update the blogs in local storage
+//   localStorage.setItem('blogs', JSON.stringify(blogs))
+
+// const createblogelement =({title}) =>{
+//   const blogs_div    =document.createElement("div")
+//   const font_div    =document.createElement("div")
+//   const blog_title  =document.createElement("h3")
+//  const fontablogcontainer =document.createElement("article")
+//  const publishbtn = document.createElement("button")
+//  const  deletebtn   = document.createElement("button")
+//  blogs_div.setAttribute("class","blogdiv")
+//  font_div.setAttribute("class","fontas")
+//  publishbtn.innerText = "Post"
+//  deletebtn.innerText = "delete"
+
+//  deletebtn.setAttribute("id","deleting")
+//  deletebtn.setAttribute("class","deletebtn")
+//  deletebtn.setAttribute("onclick","deleteBlog(`${index}`)")
+//  publishbtn.setAttribute("class","publishbtn")
+
+//  blog_title.innerText =   title
+ 
+// font_div.append(publishbtn,deletebtn)
+//   blogs_div.append(blog_title);
+//   blogs_container.appendChild(fontablogcontainer,font_div)
+//   fontablogcontainer.append(blogs_div)
+//   fontablogcontainer.appendChild(font_div)
+
+// };
+// blogs.forEach(createblogelement);
+
+
+/* const blogs_container= document.querySelector(".blogscreated")
+  const sendbtn = document.querySelector('.submit');
+  const formdata = document.querySelector(".form")
+  const title_input = formdata["title"]
+  const aurthur_input = formdata["aurthor"]
+  const highlight_input = formdata["highlight"]
+  const message_input = formdata["message"]
+  const photo_input = document.querySelector("#image")
+ console.log(photo_input)
+
+  const blogs = JSON.parse(localStorage.getItem("blogs")) || []
+
+  const addblog = ( title, aurthor,highlight,message,photo) => {
+  blogs.push({
+   title,
+   aurthor,
+   highlight,
+   message,
+   photo,
+   published :false
+});
+localStorage.setItem("blogs",JSON.stringify(blogs))
+return {title,message,};
+
+
+  };
+
+const createblogelement =(e) =>{
+  const {
+    title 
+  } = e
+  const blogs_div =document.createElement("div")
+  const font_div    =document.createElement("div")
+  const blog_title  =document.createElement("h3")
+ const fontablogcontainer =document.createElement("article")
+ const publishbtn  = document.createElement("button")
+
+ const  deletebtn  = document.createElement("button")
+
+ blogs_div.setAttribute("class","blogdiv")
+ font_div.setAttribute("class","fontas")
+ if( e.published){
+  publishbtn.innerText = "Unpublish"
+ }
+ else{
+  publishbtn.innerText = "Publish"
+ }
+ deletebtn.innerText = "delete"
+ deletebtn.setAttribute("id","deleting")
+ deletebtn.setAttribute("class","deletebtn")
+ publishbtn.addEventListener
+//publish button
+publishbtn.addEventListener("click",function(event){
+  event.preventDefault()
+  let index = blogs.indexOf(e)
+  if(index != -1){
+    if(e.published){
+
+      blogs[index].published  = false 
+      publishbtn.innerText ="Publish"
+    console.log(index)
+   }
+   else{
+     blogs[index].published  = true 
+     publishbtn.innerText ="Unpublish"
+   }
+   localStorage.setItem("blogs",JSON.stringify(blogs))
+  
+  }
+
+})
+
+
+ // delete button
+deletebtn.addEventListener("click",function(event){
+event.preventDefault()
+ let index = blogs.indexOf(e)
+ console.log(blogs[index])
+ deletebtn.parentNode.parentNode.remove()
+ blogs.splice(index,1)
+ localStorage.setItem("blogs",JSON.stringify(blogs))
+})
+ publishbtn.setAttribute("class","publishbtn")
+
+ blog_title.innerText =   title
+ 
+font_div.append(publishbtn,deletebtn)
+  blogs_div.append(blog_title);
+  blogs_container.appendChild(fontablogcontainer,font_div)
+  fontablogcontainer.append(blogs_div)
+  fontablogcontainer.appendChild(font_div)
+
+};
+blogs.forEach(createblogelement);
+formdata.onsubmit  = async(e) =>{
+   e.preventDefault();
+
+   const newBlog =await addblog(
+   title_input.value,
+   aurthur_input.value,
+   highlight_input.value,
+
+   message_input.value,
+   photo_input.value,
+   )
+   createblogelement(newBlog)
+   title_input.value = ""
+   aurthur_input.value =""
+   highlight_input.value=""
+   message_input.value= ""
+
+}
+*/

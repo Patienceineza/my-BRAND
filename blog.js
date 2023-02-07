@@ -70,88 +70,68 @@ fetch("https://mybrandbackendapi.up.railway.app/blogs",newData)
   console.log(res)
 let allblogs = res
 
-allblogs.forEach (blog =>{
-  if( blog.published == "unpublish" ){
-  
+
+ 
 const grid = document.querySelector(".grid")
+allblogs.forEach((data) => {
+  id = JSON.stringify(data._id);
+  grid.innerHTML += `
 
-const card = document.createElement("div")
-card.classList.add("card")
-const card_img= document.createElement("div")
-card_img.classList.add("card_img")
-const img_src= document.createElement("img")
-const card_body= document.createElement("div")
-card_body.classList.add("card_body")
-//card_img.innerHTML =blog.photo
-const card_title= document.createElement("h2")
-card_title.classList.add("card_title")
- card_title.innerText =blog.title
-const card_story= document.createElement("p")
-card_story.classList.add("card_story")
-card_story.innerText =blog.message
-const card_story_more= document.createElement("p")
-card_story_more.classList.add("revealmore")
-card_story_more.innerText =blog.highlight
-const card_aurthur= document.createElement("p")
-card_aurthur.classList.add("card_author")
-card_aurthur.innerText ="by "
-const link = document.createElement("a")
-link.classList.add("author_link")
-link.href ="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" 
-link.innerText= blog.aurthor
-img_src.setAttribute('src',blog.imageUrl)
-card_aurthur.append(link)
+  <div class="card_body">
+  <div class="insidebody">
+      <div class="img">
+          <img src="${data.image.url}">
+      </div>
+      <div class="others">
+         
+      <h2 class="card_title"><u>${data.title}</u></h2>
+  <p>${data.highlight}</p>
+  <p class ="revealmore"> ${data.message}</p>
+  <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link">${data.author}</a></p>
+  <a href="#" class="read_more">Read article</a>
+  <div class = "reactions">
+       <p><i class="fa-solid fa-heart"></i></i></i> 40</p>
+      <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
+      <p> <i class="fa-solid fa-message"></i>50</p>
+</div>
+</div>`
 
-const card_button= document.createElement("a")
-card_button.classList.add("read_more")
-card_button.innerText ="Read more"
+ 
+const readimore = document.querySelector(".read_more")
 
-card_button.addEventListener("click",e=> {
-e.preventDefault()
-reveal(card_button.parentNode)
+console.log("fghjkljhg")
 
-})
+readimore.addEventListener("click",(e)=>{
+  e.preventDefault()
+  console.log(data)
 
-
-const reactions = document.createElement("div")
-reactions.classList.add("reactions")
-const like = document.createElement("p")
-const dislike = document.createElement("p")
-const comment = document.createElement("p")
-
-comment.innerText = 0
-like.innerText = 0
-dislike.innerHTML= 0
-const like_i = document.createElement("i")
-const dislike_i = document.createElement("i")
-const comment_i = document.createElement("i")
-
-
-like_i.setAttribute("class","fa-solid fa-heart")
-dislike_i.setAttribute("class","fa-solid fa-thumbs-down")
-comment_i.setAttribute("class","fa-solid fa-message")
-
-
-card_img.append(img_src)
-card.append(card_img)
-comment.append(comment_i)
-like.append(like_i)
-dislike.append(dislike_i) 
-reactions.append(like,dislike,comment)
-card_body.append(card_title,card_story,card_story_more,card_aurthur,card_button,reactions)
-card.append(card_body)
-grid.append(card)
-
-
+  const display_1_blogs = async() =>{
+    const singleblog = document.getElementById("singleblog");
+    if(singleblog){
+      
+      const response = await fetch(`https://mybrandbackendapi.up.railway.app/blogs/${data._id}`, {
+        method: "GET"
+      });
+      const blogs = await response.json();
+    
+        singleblog.innerHTML = `<div class="oneblog">
+              
+        <div class="card_img">
+          <img src="${blogs.image.url}" alt="">
+        </div><br>
+        <h1>${blogs.title}</h1><br>
+        <p>${blogs.body}</p>
+        </div> `
+  
+    }
   }
- })
- 
- 
-
-
-
+  display_1_blogs()
 })
 
+
+
+
+})})
 
 .catch(error=>{
 console.log(error)
@@ -161,38 +141,3 @@ console.log(error)
 
 
 
-
-/*
-//like
-const likeBtn = document.querySelector('.fa-solid fa-heart');
-const numberOfLikesElement = document.querySelector('.likesnumber');
-console.log(numberOfLikesElement)
-
-//let numberOfLikes = Number.parseInt(numberOfLikesElement.innerHTML, 10);
-
-let isLiked = false;
-
-// Functions
-
-const likeClick = () => {
-
-// if the like button hasn't been clicked
-
-  if (!isLiked) {
-    likeBtn.classList.add('isLiked');
-    likeBtn.setAttribute("class","fa-regular fa-heart")
-    //numberOfLikesElement.textContent = numberOfLikes;
-    isLiked = !isLiked;
-  }
-// if the like button has been clicked
- else {
-    likeBtn.classList.remove('isLiked');
-   // numberOfLikes--;
-    //numberOfLikesElement.textContent = numberOfLikes;
-    isLiked = !isLiked;
-  }
-};
-
-// Event Listeners
-
-likeBtn.addEventListener('click', likeClick);*/

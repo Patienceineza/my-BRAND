@@ -1,0 +1,456 @@
+header{
+    background:black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    contain: content;
+
+}
+ nav img{ 
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 45px;
+    height:45px ;
+    border-radius: 50px;
+
+}
+
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:#FFA500;
+    align-items: center;
+  }
+ul li a {
+    color: #FFA500;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 600;
+    transition: 0.9s;
+} 
+ul li a:hover {
+    font-size: large;
+}
+ li{
+  list-style: none;
+  font-weight: bold;
+  font: size 32px; 
+  font-style: normal;
+}
+
+main{
+    background: url("./photos/pexels-jessica-lewis-creative-583848.jpg")no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 90px);
+    align-items: center;
+    background-color: rgb(32, 15, 15);
+    font-family:
+    sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    color: #1B1C34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+
+
+
+
+.container {
+    max-width: 70%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3%;
+    margin: 5% 0;
+}
+
+.insidebody{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height: 300px;
+}
+.card {
+    overflow: hidden;
+    padding: 20px;
+    background-color :rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.img{
+    width:50%
+}
+.img img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.card_body {
+    padding: 26px 20px 36px 20px;
+}
+
+.card_title {
+    font-family: 'Merriweather',
+        serif;
+    font-weight: 900;
+    text-transform: capitalize;
+
+    font-size: 26px;
+    padding-bottom: 10px;
+}
+
+.card_body p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+
+}
+
+p.card_author {
+    font-size: 15px;
+    padding-top: 15px;
+
+}
+
+p.card_author a {
+    color: #1B1C34;
+    font-style: italic;
+}
+
+p.card_author a:hover {
+    font-weight: bold;
+}
+
+a.read_more {
+    color:#FFA500;
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: 1.1px;
+    background:black;
+    margin-top: 50px;
+    padding: 24px 0px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 70%;
+    transition: all .3s ease-in-out;
+}
+
+a.read_more:hover {
+    box-shadow: 0px 1px 50px rgba(0, 0, 0, 0.15);
+    background:#FFA500;
+    color: #000;
+}
+
+.link {
+    position: fixed;
+    background-color: #D12322;
+    padding: 23px 40px;
+    right: -106px;
+    border-radius: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: rotate(-90deg);
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .1s ease-in-out;
+}
+
+.link i {
+    padding-left: 7px;
+}
+
+.revealmore{
+  display:none;
+} 
+.revealmore.readmore{
+  display: flex;
+}
+.reactions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+.reactions p{
+  padding: 10px;
+}
+.link:hover {
+    text-decoration: underline;
+    background-color: black;
+}
+
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+    .container {
+        max-width: 80%;
+    }
+
+    .grid {
+        gap: 2%;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card_body {
+        padding: 15px;
+    }
+
+    .card_title {
+        font-size: 22px;
+        padding-bottom: 14px;
+    }
+
+    .card_body p {
+        font-size: 16px;
+    }
+
+    a.read_more {
+        padding: 19px 0;
+        width: 60%;
+        font-size: 11px;
+        margin-top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2%;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .card {
+        padding: 20px 10px;
+    }
+
+    .card_body {
+        padding: 7px;
+    }
+
+    .card_title {
+        font-size: 20px;
+        padding-bottom: 7px;
+    }
+
+    .card_body p {
+        font-size: 14px;
+    }
+
+    a.read_more {
+        padding: 15px 0;
+        margin-top: 20px;
+    }
+
+}
+    
+
+ footer{
+    background: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height:30px;
+    color: white;
+ }
+ *{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    background: url("./photos/pexels-jessica-lewis-creative-583848.jpg")no-repeat center center/cover;
+    background-color: #000;
+
+
+  }
+  
+   
+  nav{
+    display: grid;
+      background: #000000;
+      height: 80px;
+      width: 100%;
+     grid-template-columns: 1fr 1fr;
+    }
+    label.logo{
+      color: white;
+      font-size: 35px;
+      line-height: 80px;
+      padding: 0 100px;
+      font-weight: bold;
+    }
+    nav ul{
+      
+      margin-right: 20px;
+    }
+    nav ul li{
+     
+      width: 20%;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+    nav ul li a{
+      color:#FFA500;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: capitalize;
+    }
+    a.active,a:hover{
+      background: #576168;
+      transition: .5s;
+    }
+    .checkbtn{
+      font-size: 30px;
+      color: white;
+      float: right;
+      line-height: 80px;
+      margin-right: 40px;
+      cursor: pointer;
+      display: none;
+    }
+    #check{
+      display: none;
+    }
+    @media (max-width: 1250px){
+      nav ul li {
+        font-size: 14px;
+        width: 35%;
+        line-height:15px;
+        margin: 0 0px;
+      }
+  
+    }
+    @media (max-width: 1025px){
+      label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+      }
+      nav{
+          display:block;
+      
+      }
+      nav ul li a{
+        font-size: 16px;
+      }
+    }
+    @media (max-width: 1024px){
+      .checkbtn{
+        display: flex;
+        flex-direction: row;
+  
+      }
+      ul{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 40%;
+        height: 80vh;
+        background: #808385;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        margin-left:60%;
+      }
+      nav ul li{
+     
+        line-height: 30px;
+      }
+      nav ul li a{
+        font-size: 20px;
+      }
+      a:hover,a.active{
+        background: none;
+        color: #000000;
+      }
+      #check:checked ~ ul{
+        left: 0;
+      }
+    }
+  
+  
+.quotespace{
+  height: 70vh;
+  background: url("./photos/janko-ferlic-sfL_QOnmy00-unsplash.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
+  text-align: center;
+}
+.quote-cont{
+
+  width: 500px;
+  padding: auto;
+}
+.quote-header h2{
+  font-size: 1.6rem;
+  color:#FFA500;
+  border:solid 2px white;
+  background: #000;
+  border-radius: 3px;
+  text-transform:capitalize ;
+  
+}
+.quotecontent{
+  padding: 30px 30px;
+  background: rgb(204, 199, 199);
+  height: 350px;
+border-radius: 10px;
+align-content: center;
+display: flex;
+flex-direction: column;
+}
+.quotecontent span{
+  font-size: 1.4rem;
+  height: 100px;
+}
+ 
+
+.quotecontent .person{
+  padding :20px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  
+}
+
+.quotecontent .buttonspace button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-transform:capitalize ;
+  background: #000;
+  border: none;
+  border-radius: 5px;
+  color: #FFA500;
+  padding: 5px 10px;
+}
+    
