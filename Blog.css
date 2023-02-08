@@ -2,7 +2,7 @@
 
 
 main{
-    background: url("./photos/pexels-jessica-lewis-creative-583848.jpg")no-repeat;
+    background: url("./photos/pexels-jessica-lewis-creative-583848.jpg")center center no-repeat;
     background-size: cover;
     min-height: calc(100vh - 90px);
     align-items: center;
