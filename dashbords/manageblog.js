@@ -124,8 +124,15 @@ formdata.onsubmit = (e) =>{
       console.log(error)
     }
   }
+
+
   //  createblogelement(newBlog)
   newBlog()
   
 }
+
+
+
+
+
 

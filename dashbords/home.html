@@ -28,9 +28,9 @@
         <div id = "allblogs_received" >  </div>
     </main>
    <div class="sidebar">
-    <div><a href="dashbord.html">Dashboard</a></div>
-    <div><a href="manageblog.html">Manage blog</a></div>
-    <div><a  class = "active" href="manageuser.html">messages</a></div>
+    
+    <div><a class = "active"  href="manageblog.html">Manage blog</a></div>
+    <div><a  href="manageuser.html">messages</a></div>
     <div><a  href="addblog.html">manage users</a></div>
    </div> 
 
@@ -70,10 +70,13 @@ fetch("https://mybrandbackendapi.up.railway.app/blogs",getAlblogs)
     fonta_div.setAttribute("class","fonta-div")
     const deletebtn = document.createElement('button')
     const publish = document.createElement('button')
+    const edit = document.createElement('button')
+    fonta_div.append(edit)
 fonta_div.append(publish)
 fonta_div.append(deletebtn)
 deletebtn.innerText='delete'
 publish.innerText='publish'
+edit.innerText='edit'
 article.append(title)
 all_container .append(article,fonta_div)
 blogs_received.append(all_container)
@@ -138,7 +141,24 @@ publish.addEventListener('click', (e) => {
     });
 });
 
+edit.addEventListener("click",(e)=>{
+e.preventDefault()
+console.log(res)
+const id =res._id
 
+console.log(id)
+localStorage.setItem('idedit',res._id)
+localStorage.setItem('titleedit',res.title)
+localStorage.setItem('highlightedit',res.highlight)
+localStorage.setItem('messageedit',res.message)
+localStorage.setItem('aurthoeedit',res.author)
+localStorage.setItem('imageedit',res.image)
+console.log("fghdjsklkjehr")
+window.location.href = "editblog.html"
+
+
+
+})
 
 
 

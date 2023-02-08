@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="manageblog.css">
+</head>
+<body>
+ <div class="container">
+    <nav class="nav"> 
+      <header class = "header"> 
+        <div>
+          <img  id="profile" src="Untitled design.png" alt="myprofile">
+        </div>
+        <div>
+            <ul>
+                
+              
+              <li><button><a href="../index.html">home</a></button></li>
+            </ul>
+        </div>
+         </header>
+    </nav>
+    <main class = "main">  
+       <div>
+         <h2>create blog here</h2>
+       <a href="home.html"> <button>view all blogs</button></a>
+       </div>
+
+    <form class = "form"   method="post" enctype="application/x-www-form-urlencoded">
+      <label>Blog Title:</label>
+      <input type="text"  class ="blog-title" name="title" id="title">
+      <br>
+      <label>Blog image Url:</label>
+      <input type="file"  class ="image_palce" name="image" id="image">
+      <br>
+      <label>Blog aurthor:</label>
+      <input type="text"  class ="blog-title" name="aurthor" id="aurthor">
+      <br>
+      <label>Blog highligh:</label>
+      <textarea name="highlight"  class ="blog-story" id="highligh"></textarea>
+      <br>
+      <label>Blog full Message:</label>
+      <textarea name="message"  class ="blog-story"id="message"></textarea>
+      <br>
+       
+      <input type="submit" class = "submit" value="update Blog">
+    </form>
+
+    <div class ="blogscreated"></div>
+        </main>
+   <div class="sidebar">
+    
+    <div><a class = "active" href="manageblog.html">Manage blog</a></div>
+    <div><a  href="manageuser.html">messages</a></div>
+    <div><a  href="addblog.html">manage users</a></div>
+     
+   </div> 
+  
+   <footer>
+    copyright @2022. All right reserved .Patience
+    
+   </footer>
+ </div>
+ <script >
+const sendbtn = document.querySelector('.submit');
+  const formdata = document.querySelector(".form")
+  const title_input = document.querySelector("#title")
+  const aurthur_input = document.querySelector("#aurthor")
+  const highlight_input = document.querySelector("#highligh")
+  const message_input = document.querySelector("#message")
+  const photo_input = document.querySelector("#image")
+ const editBtn =document.querySelector(".submit")
+
+
+  const id =localStorage.getItem('idedit')
+    const title = localStorage.getItem('titleedit')
+    const highlight =localStorage.getItem('highlightedit')
+     const message = localStorage.getItem('messageedit')
+      const aurthor = localStorage.getItem('aurthoeedit')
+      const image =localStorage.getItem('imageedit',)
+console.log(editBtn)
+title_input.value = title
+aurthur_input.value = aurthor
+highlight_input.value = highlight
+message_input.value= message
+
+
+console.log(title)
+
+const newBlog = (e)=>{
+    console.log(e)
+    // console.log("loaded")
+    const titleValue = title_input.value
+   const authorValue = aurthur_input.value
+   const messageValue = message_input.value
+   const highlight = highlight_input.value
+   console.log(titleValue)
+      //const reader = new FileReader();
+      const token = localStorage.getItem("token")
+     
+      var new_blog = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            "authorization":`Bearer ${token}`
+        },
+        body: JSON.stringify({
+          title: titleValue,
+          author: authorValue,
+          highlight:highlight,
+          message: messageValue
+        })
+        }
+        console.log(new_blog.body)
+        fetch(`https://mybrandbackendapi.up.railway.app/blogs/${e}`,new_blog)
+        .then((res)=>{
+            console.log(res)
+      return res.json()
+        
+        }).then((data)=>{
+        console.log(data)
+        })
+        .catch((error)=> {
+      console.log(error)
+    })
+}
+
+editBtn.addEventListener(("click") ,(e)=> {
+   e.preventDefault();
+
+   //const   imageValue=photo_input.files
+
+   
+
+  newBlog(id)
+
+})
+
+
+// })
+        // console.log(titleValue, authorValue, messageValue)
+        // const blog =  await response.json(); 
+        // console.log(blog)
+       // createblogelement(newBlog)
+        // if(blog.title == titleValue){
+        //   alert("blog updated")
+        //   location.reload()
+        // }
+        // else(console.log(blog))  
+      
+      //reader.readAsDataURL(imageValue[0]);
+
+
+
+ </script>
+</body>
+</html>
