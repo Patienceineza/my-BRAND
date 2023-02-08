@@ -20,7 +20,7 @@ function users() {
     const res =  await n.json()
    console.log(res)
 blogcontiner.innerHTML +=`
-           
+       
 <div class="card_body">
 <div class="insidebody">
 
@@ -32,17 +32,17 @@ blogcontiner.innerHTML +=`
         
 
 <p>${res.highlight}</p>
-<p class ="revealmore">${res.message}</p>
+<p>${res.message}</p>
 <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link"> ${res.author}</a></p>
 
 <div class = "reactions">
      <p><i class="fa-solid fa-heart"></i></i></i> 40</p>
     <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
-    <p> <i class="fa-solid fa-message"></i>50</p>
+    <p> <i class="fa-solid fa-message"></i>${res.blog_comments.length}</p>
 </div>
 
 <div class="input-boxmessage-box">
-<textarea type=" "  id ="name"  cols="40" rows="5" placeholder=" write your  name here" required></textarea>
+<textarea type=" "  id ="name"  cols="40" rows="" placeholder=" write your  name here" required></textarea>
 <textarea type=" "  id ="issue"  cols="40" rows="5" placeholder="write comment here" required></textarea>
 <button id = "buttoni"> Post Comment</button>
 </div>
@@ -53,7 +53,9 @@ blogcontiner.innerHTML +=`
 <div class = "commentdiv"><div>
 
 </div>
+
 </div>
+
 `
 const name = document.querySelector("#name")
  const datas = document.querySelector("#issue")
@@ -74,10 +76,14 @@ function displayAllcomments(id) {
     fetch(checkUrl, options)
 
         .then((res) => {
+        
             let mess = res.json()
+           
             return mess;
         }).then((data) => {
+     
             data.comments.map((x) => {
+          
                 return (
                     commentdiv.innerHTML += `
 

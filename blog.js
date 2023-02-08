@@ -59,7 +59,7 @@ if (pub == "unpublish"){
   <div class = "reactions">
        <p><i class="fa-solid fa-heart"></i></i></i> 40</p>
       <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
-      <p> <i class="fa-solid fa-message"></i>50</p>
+      <p> <i class="fa-solid fa-message">${data.blog_comments.length}</i></p>
 </div>
 </div>`
 }

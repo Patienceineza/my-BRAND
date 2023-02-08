@@ -103,19 +103,46 @@ main{
     min-height: 100vh;
     color: #1B1C34;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     }
     .blogs {
-        
+      margin-top: 20px;
+
         width: 80%;
        background-color :rgba(255, 255, 255, 0.7);
        display: flex;
        flex-direction: row;
        
     }
-    .comments{
-     
+   
+    
+  button{
+     text-decoration: none;
+   
+     display: flex;
+    justify-items: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+  border: none;
+    font-size: 13px;
+  
+    letter-spacing: 1.1px;
+    background:black;
+    margin-top: 50px;
+    padding: 24px 0px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 30%;
+    transition: all .3s ease-in-out;
+    }
+    button a{
+      text-decoration: none;
+      color:#FFA500;
+    }
+    button:hover{
+      
     }
     .input-boxmessage-box textarea{
      border: 1px solid black;
