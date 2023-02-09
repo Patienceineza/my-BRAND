@@ -1,8 +1,8 @@
-
+const token = localStorage.getItem('token');
 const blogcontiner = document.querySelector(".blogs")
 console.log(blogcontiner)
 function users() {
-    const token = localStorage.getItem('token')
+    
     const   id = localStorage.getItem('clickedblog')
   console.log(id)
     const  getallusers ={
@@ -36,7 +36,7 @@ blogcontiner.innerHTML +=`
 <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link"> ${res.author}</a></p>
 
 <div class = "reactions">
-     <p><i class="fa-solid fa-heart"></i></i></i> 40</p>
+     <p><i class="fa-solid fa-heart" id = "like"></i></i></i> ${res.Likes.count}</p>
     <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
     <p> <i class="fa-solid fa-message"></i>${res.blog_comments.length}</p>
 </div>
@@ -65,12 +65,12 @@ console.log(button)
 
 function displayAllcomments(id) {
     let checkUrl = 'https://mybrandbackendapi.up.railway.app/blogs/allcomments/' + id;
-    const token = localStorage.getItem('AdminToken');
+   
     const options = {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
+          
         }
     };
     fetch(checkUrl, options)
@@ -122,7 +122,7 @@ button.addEventListener("click", async () => {
         Comment
     }
     console.log(comment)
-    const token = localStorage.getItem("AdminToken");
+
     const createComment = {
         method: 'POST',
         headers: {
@@ -134,6 +134,7 @@ button.addEventListener("click", async () => {
     console.log(createComment)
     fetch('https://mybrandbackendapi.up.railway.app/blogs/comments/' + id, createComment)
         .then(async (data) => {
+            console.log(token)
             const res = await data.json()
             alert(res.message ="comment added");
           location.reload()
@@ -150,10 +151,46 @@ button.addEventListener("click", async () => {
 
 
   
+const like = document.querySelector("#like")
+console.log(like)
 
 
+  like.addEventListener("click",(e)=>{
+  e.preventDefault()
+  const   id = localStorage.getItem('clickedblog')
 
-  })}
+  console.log(id)
+ 
+  const createComment = {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    },
+   
+};
+console.log(createComment)
+fetch(`https://mybrandbackendapi.up.railway.app/blogs/${id}/like` ,createComment)
+    .then(async (data) => {
+        console.log(token)
+        const res = await data.json()
+        console.log(res)
+        alert(res);
+      location.reload()
+
+        if (!data.ok) {
+            throw Error(data.status);
+        }
+
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+  })
+
+
+  }
  
 
 

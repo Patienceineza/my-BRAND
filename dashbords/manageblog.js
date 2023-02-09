@@ -76,7 +76,7 @@
 
 // });
  
-
+const token = localStorage.getItem('token')
 const sendbtn = document.querySelector('.submit');
   const formdata = document.querySelector(".form")
   const title_input = formdata["title"]
@@ -102,10 +102,12 @@ formdata.onsubmit = (e) =>{
       reader.addEventListener('load', async()=>{
         const response = await fetch('https://mybrandbackendapi.up.railway.app/blogs',{
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+        "authorization":`Bearer ${token}`
+      },
         body: JSON.stringify({
           title: titleValue,
-          author: authorValue,
+          aurthor: authorValue,
           image: reader.result,
           highlight:highlight,
           message: messageValue

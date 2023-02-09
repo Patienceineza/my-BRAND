@@ -42,6 +42,7 @@ console.log(pub)
 if (pub == "unpublish"){
 
   id = JSON.stringify(data._id);
+ 
   grid.innerHTML += `
 
   <div class="card_body">
@@ -57,7 +58,7 @@ if (pub == "unpublish"){
   <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link">${data.author}</a></p>
   <a href="blogdis.html" class="read_more" id=${data._id}>Read article</a>
   <div class = "reactions">
-       <p><i class="fa-solid fa-heart"></i></i></i> 40</p>
+       <p><i class="fa-solid fa-heart" id = ""></i></i></i>${data.Likes.count}</p>
       <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
       <p> <i class="fa-solid fa-message">${data.blog_comments.length}</i></p>
 </div>
@@ -80,5 +81,27 @@ window.location.href = "blogdis.html"
 })
 }
 
+  
+
+
+
+
+// const  newData ={
+//   method:'put',
+//   headers:{
+//     'Content-Type':"application/json",
+//     "authorization":`Bearer ${token}`
+//   }
+ 
+// }
+// console.log(newData)
+// fetch("https://mybrandbackendapi.up.railway.app/blogs/",newData)
+// .then( async (n)=>{
+//   const res =  await n.json()
+//   console.log(res)
+// let allblogs = res
+
+
 })
+
 
