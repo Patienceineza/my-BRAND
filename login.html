@@ -26,7 +26,7 @@
           <a href="Blogpage.html">blogs</a>
     
           <a href="contact.html">contact</a>
-          <a  class= "active"href="login.html">login</a>
+          <a  class= "active"href="login.html" id = "log">login</a>
         </div>
       </nav>
     </header>
@@ -54,6 +54,43 @@
 </footer> 
  <script src="bar.js"></script>
  <script>
+   let tokeni = localStorage.getItem("token")
+   const log = document.querySelector("#log")
+function changelogin(){
+ 
+  console.log(tokeni)
+  if(tokeni){
+ 
+    console.log(log)
+      log.innerHTML = "logout"
+  }
+ 
+
+  
+}
+
+
+    function logout(){
+      
+     window.localStorage.removeItem("token")
+    }
+log.addEventListener("click",(e)=>{
+  const response = confirm("Are you sure you want to do logout?");
+
+if (response) {
+    alert(" logout successfull");
+} else {
+    alert("logout cancelled");
+}
+e.preventDefault()
+logout()
+location.reload()
+
+})
+
+
+
+changelogin()
 const form = document.querySelector(".Form-1")
 
 const loginBtn = document.querySelector(".button1")
@@ -87,9 +124,14 @@ fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
   let k = res.token
 
   if(n.status == 200){
-  alert('login successfull')
+
   localStorage.setItem('token',res.token)
 location.reload()
+alert('login successfull')
+// window.location.href = "index.html"
+
+
+
   }
  
 }).catch(error=>{
@@ -132,6 +174,8 @@ alert(" User not found ")
 
 */
 })
+
+
 </script>
   </Body>
 </Html>

@@ -118,7 +118,7 @@ main{
     }
    
     
-  button{
+  .buttoni{
      text-decoration: none;
    
      display: flex;
@@ -133,7 +133,7 @@ main{
     margin-top: 50px;
     padding: 24px 0px;
     border-radius: 5px;
-    display: inline-block;
+ 
     width: 30%;
     transition: all .3s ease-in-out;
     }
@@ -309,6 +309,7 @@ a.read_more:hover {
 .comments{
     background: white;
     width: 70%;
+    margin-top: 5px;
 }
 .allcomments{
     margin-top: 0px;
@@ -380,15 +381,39 @@ a.read_more:hover {
     align-items: flex-start;
 }
 
-.date p {
+.time  {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 00;
-    font-size: 10px;
-    line-height: px;
-    color: red;
+    font-size: 15px;
+   flex-wrap: wrap;
+display: flex;
+justify-content: flex-start;
+    color:#FFA500
 }
 
 .name-date-and-comments {
     gap: 1px
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+padding: 12px 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 5px;
+}
+.name p{
+  display: flex;
+  flex-wrap: wrap;
+ align-content: end;
+}
+.name i{
+  font-size: 30px;
+}
+.commentbody{
+display: flex;
+justify-content: flex-start;
+margin-left: 12px;
 }

@@ -86,15 +86,21 @@ function displayAllcomments(id) {
           
                 return (
                     commentdiv.innerHTML += `
+                    <div class= "comment1">
 
-<div class= "comment1">
-
-<div class = "name">${x.Names}</div>
-<div> ${x.Comment}</div>
-<div class = "time">${x.date}   ${x.Time}</div>
-
-<div></div>
-</div>
+                    <div class = "name">
+                     <i class="fa-solid fa-user">
+                    
+                     </i><div>
+                     <p> ${x.Names}</p>
+                     <div class = "time">${x.date}   ${x.Time}</div>
+                     </div></div>
+                    
+                    <div class = "commentbody"> ${x.Comment}</div>
+                    
+                    
+                    <div></div>
+                    </div>
 `
                 )
             })
