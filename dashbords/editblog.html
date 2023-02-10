@@ -121,7 +121,9 @@ const newBlog = (e)=>{
       return res.json()
         
         }).then((data)=>{
-        console.log(data)
+      alert(data)
+      location.href = "home.html"
+localStorage.removeItem()
         })
         .catch((error)=> {
       console.log(error)

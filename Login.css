@@ -262,3 +262,8 @@ footer{
   left:40%;
   align-self: center;
 }
+.nav__link img{
+width: 50px;
+height: 50px;
+border-radius:50px;
+}

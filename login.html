@@ -37,8 +37,7 @@
       <H1>Login</H1>
       <Label For="Email">Email</Label>
       <Input Type="Email" Name="Email" Id="Email"  required/>
-      <Label For="Username">Username</Label>
-      <Input Type="text" Name="Username" Id="Username" required/>
+  
       <Label For="Password">Password</Label>
       <Input Type="Password" Name="Password" Id="Password"  required/>
       <Span> Forgot Password</Span>
@@ -54,6 +53,7 @@
 </footer> 
  <script src="bar.js"></script>
  <script>
+
    let tokeni = localStorage.getItem("token")
    const log = document.querySelector("#log")
 function changelogin(){
@@ -62,11 +62,11 @@ function changelogin(){
   if(tokeni){
  
     console.log(log)
-      log.innerHTML = "logout"
+      log.innerHTML ="logout"
   }
  
 
-  
+  localStorage.removeItem("nameuser")
 }
 
 
@@ -100,7 +100,6 @@ loginBtn.addEventListener( "click",(event)=>{
   var accounts = JSON.parse(localStorage.getItem('accounts')) || [];
   var loginData = {
     email: document.getElementById('Email').value,
-    fullname:document.getElementById("Username").value,
     password: document.getElementById('Password').value
   };
 
@@ -128,11 +127,16 @@ fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
   localStorage.setItem('token',res.token)
 location.reload()
 alert('login successfull')
-// window.location.href = "index.html"
+window.location.href = "index.html"
+}
+else{
+  alert("incorrect password")
+}
+if (res.message =="admin"){
+  location.href ="./dashbords/manageblog.html"
+}
+  
 
-
-
-  }
  
 }).catch(error=>{
   console.log(error)
