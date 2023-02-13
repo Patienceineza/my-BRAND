@@ -156,7 +156,7 @@ ul li a:hover {
  .fonta-div button{
     width:50%;
     height: 50px;
-  
+  background-color: #FFA500;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -169,7 +169,7 @@ ul li a:hover {
 .allcontainer{
     display: flex;
     flex-direction: row-reverse;
-    background:rgb(255, 255, 255,0.5);
+    background:rgb(255, 255, 255);
     margin-top: 5px;
     justify-content: space-between;
     flex-wrap: wrap;
