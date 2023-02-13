@@ -56,13 +56,25 @@
 
    let tokeni = localStorage.getItem("token")
    const log = document.querySelector("#log")
+    const admin = localStorage.getItem("admin")
 function changelogin(){
  
   console.log(tokeni)
   if(tokeni){
- 
-    console.log(log)
+ if (admin == "admin"){
+  const link =  document.querySelector(".nav__link")
+  console.log(link)
+  const dash = document.createElement('a')
+  dash.setAttribute('href','./dashbords/manageblog.html')
+  dash.innerHTML = "dashbord"
+  link.append(dash)
+  log.innerHTML ="logout"
+ }
+ else{
+  console.log(log)
       log.innerHTML ="logout"
+ }
+ 
   }
  
 
@@ -125,6 +137,7 @@ fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
 
   localStorage.setItem('token',res.token)
 location.reload()
+localStorage.setItem("admin",res.message)
 alert('login successfull')
 window.location.href = "index.html"
 }
@@ -132,7 +145,8 @@ else{
   alert("incorrect password")
 }
 if (res.message =="admin"){
-  location.href ="./dashbords/manageblog.html"
+
+   location.href ="./dashbords/manageblog.html"
 }
   
 

@@ -33,11 +33,11 @@ blogcontiner.innerHTML +=`
 
 <p>${res.highlight}</p>
 <p>${res.message}</p>
-<p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link"> ${res.author}</a></p>
+<p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link"> ${res.aurthor}</a></p>
 
 <div class = "reactions">
      <p><i class="fa-solid fa-heart" id = "like"></i></i></i> ${res.Likes.count}</p>
-    <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
+
     <p> <i class="fa-solid fa-message"></i>${res.blog_comments.length}</p>
 </div>
 
@@ -175,9 +175,14 @@ fetch(`https://mybrandbackendapi.up.railway.app/blogs/${id}/like` ,createComment
         console.log(token)
         const res = await data.json()
         console.log(res)
-        alert(res);
-      location.reload()
-
+        if (token){
+            alert(res);
+            location.reload()
+      
+        }
+   else{
+    alert('login first')
+   }
         if (!data.ok) {
             throw Error(data.status);
         }
@@ -185,11 +190,8 @@ fetch(`https://mybrandbackendapi.up.railway.app/blogs/${id}/like` ,createComment
     }).catch(err => {
         console.log(err);
     });
-
 })
   })
-
-
   }
  
 

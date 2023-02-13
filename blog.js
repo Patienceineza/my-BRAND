@@ -55,11 +55,10 @@ if (pub == "unpublish"){
       <h2 class="card_title"><u>${data.title}</u></h2>
   <p>${data.highlight}</p>
   <p class ="revealmore"> ${data.message}</p>
-  <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link">${data.author}</a></p>
+  <p class="card_author">by <a href="https://www.linkedin.com/in/patience-ineza-44b470231?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Brlly3b%2FjRB%2BtztxYEv2crw%3D%3D" class="author_link">${data.aurthor}</a></p>
   <a href="blogdis.html" class="read_more" id=${data._id}>Read article</a>
   <div class = "reactions">
        <p><i class="fa-solid fa-heart" id = ""></i></i></i>${data.Likes.count}</p>
-      <p> <i class="fa-solid fa-thumbs-down"></i>40</p>
       <p> <i class="fa-solid fa-message">${data.blog_comments.length}</i></p>
 </div>
 </div>`

@@ -31,7 +31,7 @@
             <a href="Blogpage.html">blogs</a>
       
             <a href="contact.html">contact</a>
-            <a href="login.html">login</a>
+            <a href="login.html" id = "log">login</a>
           </div>
         </nav>
       </header>
@@ -56,5 +56,33 @@
     
  </footer>   
 <script src="bar.js"></script>
+<script>
+
+function changelogin(){
+  let tokeni = localStorage.getItem("token")
+   const log = document.querySelector("#log")
+    const admin = localStorage.getItem("admin")
+ console.log(tokeni)
+ if(tokeni){
+if (admin == "admin"){
+ const link =  document.querySelector(".nav__link")
+ console.log(link)
+ const dash = document.createElement('a')
+ dash.setAttribute('href','./dashbords/manageblog.html')
+ dash.innerHTML = "dashbord"
+ link.append(dash)
+ log.innerHTML ="logout"
+}
+else{
+ console.log(log)
+     log.innerHTML ="logout"
+}
+
+ }
+
+
+}
+changelogin()
+</script>
 </body>
 </html>
