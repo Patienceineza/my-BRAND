@@ -70,7 +70,7 @@ if (admin == "admin"){
  const link =  document.querySelector(".nav__link")
  console.log(link)
  const dash = document.createElement('a')
- dash.setAttribute('href','./dashbords/manageblog.html')
+ dash.setAttribute('href','./dashbords/das.html')
  dash.innerHTML = "dashbord"
  link.append(dash)
  log.innerHTML ="logout"
@@ -108,7 +108,7 @@ registerBtn.addEventListener('click', (event) => {
     body: JSON.stringify(userData)
   }
   console.log(newData)
-fetch("https://mybrandbackendapi.up.railway.app/users",newData)
+fetch("https://patienceportfolio.onrender.com/users",newData)
 .then((n)=>{
   const res = n.json()
   console.log(res)

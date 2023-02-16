@@ -1,78 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashbord.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
 
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,
+				initial-scale=1.0">
+  <title>manage blogs</title>
+  <link rel="stylesheet" href="dashbord.css">
+</head>
+
 <body>
- <div class="container">
-    <nav class="nav"> 
-      <header class = "header"> 
-        <div>
-            <img  id="profile" src="Untitled design.png" alt="myprofile">
-        </div>
-        <div>
-            <ul>
-                
-                <li><button><a href="../index.html">home</a></button></li>
-            </ul>
-        </div>
-         </header>
-    </nav>
-    <main class = "main">
-    <div class = "dashes">
-     <div class = "dashcontent"> 
-      <i class="fa-solid fa-heart"></i>
-      <p>likes</p>
-    </div>   
-     <div class = "dashcontent"> <i class="fa-solid fa-comment"></i>
-     <p class=  "likes"></p> <p>comments</p></div>   
-     <div class = "dashcontent"> <i class="fa-solid fa-thumbs-down">
-     
-     </i>
-     <p>dislikes</p>
-    </div>   
-   <style>
-    i{
-    
-     font-size:  30px;
-      color: black;
-    }
-   
-   </style>
+
+  <!-- for header part -->
+  <header>
+
+    <div class="logosec">
+      <img id="profile" src="Untitled design.png" alt="myprofile">
+      <img src="../photos/hamburger-icon-white-16.jpg" class="icn menuicn" id="menuicn" alt="menu-icon">
     </div>
 
-    
-    </main>
-   <div class="sidebar">
-    <div><a class = "active"  href="dashbord.html">Dashboard</a></div>
-    <div><a href="manageblog.html">Manage blog</a></div>
-    <div><a  href="manageuser.html">messages</a></div>
-    <div><a   href="addblog.html">manage users</a></div>
-   </div> 
-   
-   <footer>
-    copyright @2022. All right reserved .Patience
-    
-   </footer>
- </div>
- <script>
+    <div class="home">
+      <ul>
+
+        <li><button><a href="../index.html">home</a></button></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="navcontainer">
+      <nav class="nav">
+        <div class="nav-upper-options">
+
+
+          <div class="option2 nav-option" id="active">
+            <img src="../photos/blogger-5-512.png" class="nav-img" alt="articles">
+            <h3><a href="dashbord.html">Blogs</a></h3>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="../photos//user-5-512.png" class="nav-img" alt="report">
+            <h3> <a href="users.html">users</a></h3>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="../photos/message-2-512.png" class="nav-img" alt="institution">
+            <h3> <a href="messages.html">Messages</a></h3>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="../photos//home-512.png" class="nav-img" alt="blog">
+            <div>
+              <ul>
+
+                <li><button><a href="../index.html">home</a></button></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+      <div class="first">
+        <h2>create blog here</h2>
+        <a href="das.html"> <button>view all blogs</button></a>
+      </div>
+
+      <form class="form" method="post" enctype="application/x-www-form-urlencoded">
+        <label>Blog Title:</label>
+        <input type="text" class="blog-title" name="title" id="title">
+        <br>
+        <label>Blog image Url:</label>
+        <input type="file" class="image_palce" name="image" id="image">
+        <br>
+        <label>Blog aurthor:</label>
+        <input type="text" class="blog-title" name="aurthor" id="aurthor">
+        <br>
+        <label>Blog highligh:</label>
+        <textarea name="highlight" class="blog-story" id="highligh"></textarea>
+        <br>
+        <label>Blog full Message:</label>
+        <textarea name="message" class="blog-story" id="message"></textarea>
+        <br>
+
+        <input type="submit" class="submit" value="Save Blog">
+      </form>
+
+      <div class="blogscreated"></div>
+      </main>
+
+    </div>
+
+    <script src="dsah.js"></script>
+
+    <script>
+
+
+      const token = localStorage.getItem('token')
+      const sendbtn = document.querySelector('.submit');
+      const formdata = document.querySelector(".form")
+      const title_input = formdata["title"]
+      const aurthur_input = formdata["aurthor"]
+      const highlight_input = formdata["highlight"]
+      const message_input = formdata["message"]
+      const photo_input = document.querySelector("#image")
+
+
+
+      formdata.onsubmit = (e) => {
+        e.preventDefault();
+        const titleValue = title_input.value;
+        const authorValue = aurthur_input.value;
+        const messageValue = message_input.value;
+        const highlight = highlight_input.value;
+        const imageValue = photo_input.files
+
+        const newBlog = () => {
+          // console.log("loaded")
+          try {
+            const reader = new FileReader();
+            reader.addEventListener('load', async () => {
+              const response = await fetch('https://patienceportfolio.onrender.com/blogs', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  "authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                  title: titleValue,
+                  aurthor: authorValue,
+                  image: reader.result,
+                  highlight: highlight,
+                  message: messageValue
+                })
+              })
+              console.log(titleValue, authorValue, messageValue)
+              const blog = await response.json();
+              if (blog.title == titleValue) {
+                alert("blog created")
+                location.reload()
+              }
+              else (console.log(blog))
+            })
+            reader.readAsDataURL(imageValue[0]);
+          } catch (error) {
+            console.log(error)
+          }
+        }
+
+
+        //  createblogelement(newBlog)
+        newBlog()
+
+      }
 
 
 
 
- </script>
+
+
+
+    </script>
+
 </body>
 
 </html>

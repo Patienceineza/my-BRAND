@@ -1,5 +1,6 @@
 *{
 box-sizing: border-box;
+font-family: 'Poppins';
 }
 body{
     background-color: black;
@@ -230,6 +231,8 @@ main{
 }
 
 p.card_author {
+  font-family: 'Merriweather',
+        serif;
     font-size: 15px;
     padding-top: 15px;
 
@@ -308,7 +311,7 @@ a.read_more:hover {
 
 .comments{
     background: white;
-    width: 70%;
+  
     margin-top: 5px;
 }
 .allcomments{
@@ -344,8 +347,8 @@ a.read_more:hover {
     font-size: 15px;
     line-height: 22px;
     color: #000000;
-}
-
+ }
+/* 
 .date {
     display: flex;
     flex-direction: row;
@@ -377,7 +380,7 @@ a.read_more:hover {
     text-align: left;
 }
 .comment-1 {
-    /* border: 2px solid; */
+    /* border: 2px solid; 
     align-items: flex-start;
 }
 
@@ -416,4 +419,4 @@ padding: 12px 12px;
 display: flex;
 justify-content: flex-start;
 margin-left: 12px;
-}
+} */

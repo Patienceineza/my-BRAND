@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width,
+				initial-scale=1.0">
+	<title>manage blogs</title>
+<link rel="stylesheet" href="users.css">
+</head>
+
+<body>
+
+	<!-- for header part -->
+	<header>
+
+		<div class="logosec">
+            <img  id="profile" src="Untitled design.png" alt="myprofile">
+			<img src=
+"../photos/hamburger-icon-white-16.jpg"
+				class="icn menuicn"
+				id="menuicn"
+				alt="menu-icon">
+		</div>
+
+        <div class = "home">
+            <ul>
+                
+                <li><button><a href="../index.html">home</a></button></li>
+            </ul>
+        </div>
+	</header>
+
+	<div class="main-container">
+		<div class="navcontainer">
+			<nav class="nav">
+				<div class="nav-upper-options">
+		
+
+					<div class="option2 nav-option">
+						<img src=
+"../photos/blogger-5-512.png"
+							class="nav-img"
+							alt="articles">
+						<h3><a href="dashbord.html">Blogs</a> </h3>
+					</div>
+
+					<div class="nav-option option3" id = "active">
+						<img src=
+"../photos//user-5-512.png"
+							class="nav-img"
+							alt="report">
+						<h3><a href="users.html">Users</a></h3>
+					</div>
+
+					<div class="nav-option option4">
+						<img src=
+"../photos/message-2-512.png"
+							class="nav-img"
+							alt="institution">
+						<h3> <a href="messages.html">Messages</a></h3>
+					</div>
+
+					<div class="nav-option option5">
+						<img src=
+"../photos//home-512.png"
+							class="nav-img"
+							alt="blog">
+                            <div>
+                                <ul>
+                                    
+                                    <li><button><a href="../index.html">home</a></button></li>
+                                </ul>
+                            </div>
+					</div>
+
+				</div>
+			</nav>
+		</div>
+		<div class="main">
+   
+      <table>
+        <caption>All blogs</caption>
+        <thead>
+          <tr>
+            <th scope="col">NAME</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody class = "bodytable">
+      
+          <div id="loader" class="loader"></div>
+        </tbody>
+      </table>
+		</div>
+	</div>
+  <style>
+    .loader {
+   position: fixed;
+   top: 30%;
+   left: 55%;
+   transform: translate(-50%, -50%);
+   z-index: 9999;
+   background: transparent;
+   border: 8px solid #f3f3f3;
+   border-radius: 50%;
+   border-top: 8px solid #000000;
+   width: 60px;
+   height: 60px;
+   animation: spin 2s linear infinite;
+   display: none; /* Hide the loader by default */
+ }
+
+ @keyframes spin {
+   0% {
+     transform: rotate(0deg);
+   }
+   100% {
+     transform: rotate(360deg);
+   }
+ }
+   </style>
+	<script src="dsah.js"></script>
+
+
+  <script>
+       const loader = document.getElementById('loader');
+ 
+
+ function showLoader() {
+   loader.style.display = 'block';
+ }
+
+ function hideLoader() {
+   loader.style.display = 'none';
+ }
+
+
+    const users_received = document.querySelector(".bodytable")
+    async function users() {
+      showLoader()
+      var token = localStorage.getItem('token')
+
+      const getallusers = {
+        method: 'GET',
+        headers: {
+          'Content-Type': "application/json",
+          "authorization": `Bearer ${token}`
+
+        }
+      }
+      // console.log(newData)
+      console.log(getallusers.headers)
+       const allusers = await fetch("https://patienceportfolio.onrender.com/users", getallusers)
+        .then(async (n) => {
+          const res = await n.json()
+          return res
+        })
+        hideLoader()
+        allusers.forEach(res => {
+          users_received.innerHTML+=` <tr>
+          <td data-label="Name :">${res.fullname}</td>
+          <td data-label="Email :">${res.email}</td>
+          <td data-label="role :">${res.role}</td>
+          <td  data-label="action :"><button class ="delete" id =${res._id}>delete</button></td>
+        </tr>`
+         
+            const deletebtn = document.querySelectorAll(".delete")
+            console.log(deletebtn)
+            for(i = 0;i<deletebtn.length;i++){
+              deletebtn[i].addEventListener("click", async(e)=>{
+e.preventDefault()
+ const id = e.currentTarget.id
+console.log(id)
+
+const  deletedata ={
+    method:'DELETE',
+    headers:{
+      'Content-Type':"application/json",
+      "authorization":`Bearer ${token}`
+    
+      
+    }
+  }
+  console.log(id)
+   await fetch(`https://patienceportfolio.onrender.com/users/${id}`,deletedata).then(()=>{
+    window.location.reload()
+   
+ 
+  }) 
+})
+            }
+  
+
+
+
+          })
+
+    }
+
+    users()
+
+
+
+  </script>
+  <!-- /*
+ 
+const createblogelement =(e) =>{
+  const {
+    title 
+  } = e
+  const blogs_div =document.createElement("div")
+  const font_div    =document.createElement("div")
+  const blog_title  =document.createElement("h3")
+ const fontablogcontainer =document.createElement("article")
+ const publishbtn  = document.createElement("button")
+
+ const  deletebtn  = document.createElement("button")
+
+ blogs_div.setAttribute("class","blogdiv")
+ font_div.setAttribute("class","fontas")
+ if( e.published){
+  publishbtn.innerText = "Unpublish"
+ }
+ else{
+  publishbtn.innerText = "Publish"
+ }
+ deletebtn.innerText = "delete"
+ deletebtn.setAttribute("id","deleting")
+ deletebtn.setAttribute("class","deletebtn")
+ publishbtn.addEventListener
+//publish button
+publishbtn.addEventListener("click",function(event){
+  event.preventDefault()
+  let index = blogs.indexOf(e)
+  if(index != -1){
+    if(e.published){
+
+      blogs[index].published  = false 
+      publishbtn.innerText ="Publish"
+    console.log(index)
+   }
+   else{
+     blogs[index].published  = true 
+     publishbtn.innerText ="Unpublish"
+   }
+   localStorage.setItem("blogs",JSON.stringify(blogs))
+  
+  }
+
+})
+
+
+ // delete button
+deletebtn.addEventListener("click",function(event){
+event.preventDefault()
+ let index = blogs.indexOf(e)
+ console.log(blogs[index])
+ deletebtn.parentNode.parentNode.remove()
+ blogs.splice(index,1)
+ localStorage.setItem("blogs",JSON.stringify(blogs))
+})
+ publishbtn.setAttribute("class","publishbtn")
+
+ blog_title.innerText =   title
+ 
+  font_div.append(publishbtn,deletebtn)
+  blogs_div.append(blog_title);
+  blogs_container.appendChild(fontablogcontainer,font_div)
+  fontablogcontainer.append(blogs_div)
+  fontablogcontainer.appendChild(font_div)
+
+};
+blogs.forEach(createblogelement);
+formdata.onsubmit  = async(e) =>{
+   e.preventDefault();
+
+   const newBlog =await addblog(
+   title_input.value,
+   aurthur_input.value,
+   highlight_input.value,
+
+   message_input.value,
+   photo_input.value,
+   )
+   createblogelement(newBlog)
+   title_input.value = ""
+   aurthur_input.value =""
+   highlight_input.value=""
+   message_input.value= ""
+
+}
+ */ -->
+</div>
+</body>
+
+</html>

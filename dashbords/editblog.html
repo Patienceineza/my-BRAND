@@ -1,70 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="manageblog.css">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+		content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width,
+				initial-scale=1.0">
+	<title>manage blogs</title>
+<link rel="stylesheet" href="dashbord.css">
 </head>
+
 <body>
- <div class="container">
-    <nav class="nav"> 
-      <header class = "header"> 
-        <div>
-          <img  id="profile" src="Untitled design.png" alt="myprofile">
-        </div>
-        <div>
+
+	<!-- for header part -->
+	<header>
+
+		<div class="logosec">
+            <img  id="profile" src="Untitled design.png" alt="myprofile">
+			<img src=
+"../photos/hamburger-icon-white-16.jpg"
+				class="icn menuicn"
+				id="menuicn"
+				alt="menu-icon">
+		</div>
+
+        <div class = "home">
             <ul>
                 
-              
-              <li><button><a href="../index.html">home</a></button></li>
+                <li><button><a href="../index.html">home</a></button></li>
             </ul>
         </div>
-         </header>
-    </nav>
-    <main class = "main">  
-       <div>
-         <h2>create blog here</h2>
-       <a href="home.html"> <button>view all blogs</button></a>
-       </div>
+	</header>
 
-    <form class = "form"   method="post" enctype="application/x-www-form-urlencoded">
-      <label>Blog Title:</label>
-      <input type="text"  class ="blog-title" name="title" id="title">
-      <br>
-      <label>Blog image Url:</label>
-      <input type="file"  class ="image_palce" name="image" id="image">
-      <br>
-      <label>Blog aurthor:</label>
-      <input type="text"  class ="blog-title" name="aurthor" id="aurthor">
-      <br>
-      <label>Blog highligh:</label>
-      <textarea name="highlight"  class ="blog-story" id="highligh"></textarea>
-      <br>
-      <label>Blog full Message:</label>
-      <textarea name="message"  class ="blog-story"id="message"></textarea>
-      <br>
-       
-      <input type="submit" class = "submit" value="update Blog">
-    </form>
+	<div class="main-container">
+		<div class="navcontainer">
+			<nav class="nav">
+				<div class="nav-upper-options">
+		
 
-    <div class ="blogscreated"></div>
-        </main>
-   <div class="sidebar">
-    
-    <div><a class = "active" href="manageblog.html">Manage blog</a></div>
-    <div><a  href="manageuser.html">messages</a></div>
-    <div><a  href="addblog.html">manage users</a></div>
-     
-   </div> 
-  
-   <footer>
-    copyright @2022. All right reserved .Patience
-    
-   </footer>
- </div>
- <script >
+					<div class="option2 nav-option" id ="active">
+						<img src=
+"../photos/blogger-5-512.png"
+							class="nav-img"
+							alt="articles">
+						<h3> <a href="dashbord.html">Blogs</a></h3>
+					</div>
+
+					<div class="nav-option option3">
+						<img src=
+"../photos//user-5-512.png"
+							class="nav-img"
+							alt="report">
+						<h3> <a href="users.html">Users</a></h3>
+					</div>
+
+					<div class="nav-option option4">
+						<img src=
+"../photos/message-2-512.png"
+							class="nav-img"
+							alt="institution">
+						<h3> <a href="messages.html">Messages</a></h3>
+					</div>
+
+					<div class="nav-option option5">
+						<img src=
+"../photos//home-512.png"
+							class="nav-img"
+							alt="blog">
+                            <div>
+                                <ul>
+                                    
+                                    <li><button><a href="../index.html">home</a></button></li>
+                                </ul>
+                            </div>
+					</div>
+
+				</div>
+			</nav>
+		</div>
+		<div class="main">
+      <div class = "first">
+        <h2>Edit Blog</h2>
+      <a href="das.html"> <button>Create New </button></a>
+      </div>
+
+   <form class = "form"   method="post" enctype="application/x-www-form-urlencoded">
+     <label>Blog Title:</label>
+     <input type="text"  class ="blog-title" name="title" id="title">
+     <br>
+     <label>Blog image Url:</label>
+     <input type="file"  class ="image_palce" name="image" id="image">
+     <br>
+     <label>Blog aurthor:</label>
+     <input type="text"  class ="blog-title" name="aurthor" id="aurthor">
+     <br>
+     <label>Blog highligh:</label>
+     <textarea name="highlight"  class ="blog-story" id="highligh"></textarea>
+     <br>
+     <label>Blog full Message:</label>
+     <textarea name="message"  class ="blog-story"id="message"></textarea>
+     <br>
+      
+     <input type="submit" class = "submit" value="Update blog">
+   </form>
+
+   <div class ="blogscreated"></div>
+       </main>
+
+	</div>
+
+	<script src="dsah.js"></script>
+
+<script>
 const sendbtn = document.querySelector('.submit');
   const formdata = document.querySelector(".form")
   const title_input = document.querySelector("#title")
@@ -115,7 +164,7 @@ const newBlog = (e)=>{
         })
         }
         console.log(new_blog.body)
-        fetch(`https://mybrandbackendapi.up.railway.app/blogs/${e}`,new_blog)
+        fetch(`https://patienceportfolio.onrender.com/blogs/${e}`,new_blog)
         .then((res)=>{
             console.log(res)
       return res.json()

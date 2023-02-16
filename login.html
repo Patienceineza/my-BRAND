@@ -24,7 +24,6 @@
           <a href="Aboutmepage.html">about</a>
           <a href="Portfolio.html">portfolio</a>
           <a href="Blogpage.html">blogs</a>
-    
           <a href="contact.html">contact</a>
           <a  class= "active"href="login.html" id = "log">login</a>
         </div>
@@ -53,7 +52,20 @@
 </footer> 
  <script src="bar.js"></script>
  <script>
+    function showMessage(message, isSuccess) {
+        const messageContainer = document.createElement("div");
+        messageContainer.classList.add("message");
+        if (isSuccess) {
+          messageContainer.classList.add("success");
+        } else {
+          messageContainer.classList.add("error");
+        }
+        messageContainer.textContent = message;
 
+        // Insert the message before the form
+        const form = document.querySelector(".Form-1");
+        form.parentNode.insertBefore(messageContainer, form);
+      }
    let tokeni = localStorage.getItem("token")
    const log = document.querySelector("#log")
     const admin = localStorage.getItem("admin")
@@ -65,7 +77,7 @@ function changelogin(){
   const link =  document.querySelector(".nav__link")
   console.log(link)
   const dash = document.createElement('a')
-  dash.setAttribute('href','./dashbords/manageblog.html')
+  dash.setAttribute('href','./dashbords/das.html')
   dash.innerHTML = "dashbord"
   link.append(dash)
   log.innerHTML ="logout"
@@ -126,7 +138,7 @@ loginBtn.addEventListener( "click",(event)=>{
   }
  // console.log(newData)
 
-fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
+fetch("https://patienceportfolio.onrender.com/users/login",newData)
 .then( async (n)=>{
   const res =  await n.json()
   console.log(res)
@@ -138,7 +150,7 @@ fetch("https://mybrandbackendapi.up.railway.app/users/login",newData)
   localStorage.setItem('token',res.token)
 location.reload()
 localStorage.setItem("admin",res.message)
-alert('login successfull')
+showMessage("Login successful", true);
 window.location.href = "index.html"
 }
 else{
@@ -146,7 +158,7 @@ else{
 }
 if (res.message =="admin"){
 
-   location.href ="./dashbords/manageblog.html"
+   location.href ="./dashbords/das.html"
 }
   
 

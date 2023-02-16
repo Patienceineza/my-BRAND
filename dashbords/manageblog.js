@@ -1,5 +1,5 @@
  
- 
+
  
 // const sendbtn = document.querySelector('.submit');
 
@@ -100,7 +100,7 @@ formdata.onsubmit = (e) =>{
     try {
       const reader = new FileReader();
       reader.addEventListener('load', async()=>{
-        const response = await fetch('https://mybrandbackendapi.up.railway.app/blogs',{
+        const response = await fetch('https://patienceportfolio.onrender.com/blogs',{
         method: 'POST',
         headers: {'Content-Type': 'application/json',
         "authorization":`Bearer ${token}`

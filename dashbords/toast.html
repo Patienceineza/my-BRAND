@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="toast" id="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text">Some Information</p>
+        <button id="close-button" class="close-button">
+          &#10005;
+        </button>
+      </div>
+      
+      <button id="show-toast" class="show-toast">Show Toast</button>
+      <style>
+html,
+body {
+  overflow: hidden;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.text {
+  color: white;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  right: -500px;
+  background-color: black;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border: 5px solid #029c91;
+  opacity: 0%;
+  transition: all 0.25s ease-out;
+}
+
+.show-toast {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.toast-active {
+  right: 80px;
+  opacity: 100%;
+}
+
+.close-button {
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+      </style>
+      <script>
+
+let toast = document.getElementById("toast");
+document.getElementById("show-toast").addEventListener("click", function () {
+  toast.classList.add("toast-active");
+});
+document.getElementById("close-button").addEventListener("click", function () {
+  toast.classList.remove("toast-active");
+});
+
+      </script>
+</body>
+</html>
+
+
